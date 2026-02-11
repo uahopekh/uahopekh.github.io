@@ -4,188 +4,137 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HOPE — Home Of Paws Everywhere</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box}
 
-body {
-    font-family: 'Inter', sans-serif;
-    background:#f7faf8;
-    color:#1c2a23;
+body{
+    font-family:'Inter',sans-serif;
+    background:#f4f7f5;
+    color:#1e2a24;
     line-height:1.7;
 }
 
-section {
+.hero{
+    position:relative;
+    height:100vh;
+    background:url('https://images.unsplash.com/photo-1558944351-c5d4f9c35c85') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+}
+
+.hero::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:800px;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:64px;
+    font-weight:700;
+    letter-spacing:3px;
+}
+
+.hero h2{
+    margin-top:15px;
+    font-weight:400;
+    font-size:22px;
+}
+
+section{
     padding:100px 20px;
 }
 
-.container {
+.container{
     max-width:1100px;
     margin:0 auto;
 }
 
-.hero {
-    text-align:center;
-    padding:160px 20px 120px;
-    background:linear-gradient(180deg,#eaf4ee 0%,#f7faf8 100%);
-}
-
-.hero h1 {
-    font-size:52px;
+.section-title{
+    font-size:32px;
     font-weight:700;
-    letter-spacing:2px;
-}
-
-.hero h2 {
-    margin-top:15px;
-    font-weight:400;
-    color:#5f786a;
-}
-
-.section-title {
-    font-size:30px;
-    font-weight:600;
     margin-bottom:40px;
     text-align:center;
 }
 
-.text-block {
-    max-width:750px;
+.mission{
+    font-size:20px;
+    max-width:800px;
     margin:0 auto;
     text-align:center;
-    font-size:18px;
-    color:#34443b;
+    color:#3a4a42;
 }
 
-.grid {
+.grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:30px;
     margin-top:60px;
 }
 
-.card {
+.card{
     background:white;
     padding:40px 30px;
-    border-radius:16px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.05);
-    transition:all 0.3s ease;
+    border-radius:18px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.06);
+    transition:0.4s;
 }
 
-.card:hover {
-    transform:translateY(-8px);
-    box-shadow:0 25px 50px rgba(0,0,0,0.08);
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 60px rgba(0,0,0,0.1);
 }
 
-.card h3 {
+.card h3{
     margin-bottom:15px;
     font-weight:600;
 }
 
-.gallery {
+.impact{
+    background:#eaf2ed;
+    border-radius:24px;
+    padding:80px 40px;
+    text-align:center;
+}
+
+.impact h3{
+    font-size:40px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.gallery{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:30px;
     margin-top:60px;
 }
 
-.gallery img {
+.gallery img{
     width:100%;
-    height:320px;
+    height:350px;
     object-fit:cover;
-    border-radius:16px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.06);
-    transition:transform 0.4s ease;
+    border-radius:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.08);
+    transition:0.4s;
 }
 
-.gallery img:hover {
+.gallery img:hover{
     transform:scale(1.03);
 }
 
-.contact {
-    background:white;
-    border-radius:20px;
-    padding:60px;
-    max-width:700px;
-    margin:0 auto;
-    text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,0.05);
-}
-
-footer {
-    text-align:center;
-    padding:50px 20px;
-    font-size:14px;
-    color:#6b7d73;
-}
-</style>
-</head>
-
-<body>
-
-<section class="hero">
-    <h1>HOPE</h1>
-    <h2>Home Of Paws Everywhere</h2>
-</section>
-
-<section>
-<div class="container">
-    <div class="section-title">About the Foundation</div>
-    <div class="text-block">
-        HOPE is a volunteer-based animal rescue foundation dedicated to saving homeless and abandoned animals.
-        We provide medical treatment, sterilization, daily care and responsible adoption.
-        Every life deserves dignity, safety and a permanent home.
-    </div>
-</div>
-</section>
-
-<section>
-<div class="container">
-    <div class="section-title">Our Work</div>
-    <div class="grid">
-        <div class="card">
-            <h3>Medical Treatment</h3>
-            Veterinary care and rehabilitation for rescued animals.
-        </div>
-        <div class="card">
-            <h3>Sterilization Programs</h3>
-            Responsible prevention initiatives reducing homelessness.
-        </div>
-        <div class="card">
-            <h3>Daily Care</h3>
-            Food, shelter and recovery support.
-        </div>
-        <div class="card">
-            <h3>Adoption</h3>
-            Matching rescued animals with safe, loving families.
-        </div>
-    </div>
-</div>
-</section>
-
-<section>
-<div class="container">
-    <div class="section-title">Rescued Animals</div>
-    <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a">
-        <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e">
-        <img src="https://images.unsplash.com/photo-1601758123927-196b9f3b24f9">
-    </div>
-</div>
-</section>
-
-<section>
-<div class="contact">
-    <div class="section-title">Contact</div>
-    <p>Email: hope.foundation@email.com</p>
-    <p>Telegram: @hope_rescue</p>
-</div>
-</section>
-
-<footer>
-    © 2026 HOPE — Home Of Paws Everywhere
-</footer>
-
-</body>
-</html>
+.contact{
+    backgro
