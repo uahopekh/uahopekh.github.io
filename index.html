@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOPE — Home Of Paws Everywhere</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: 'Source Sans 3', sans-serif;
+    background:#ffffff;
+    color:#1f2a24;
+    line-height:1.7;
+}
+
+.lang-switch {
+    position:fixed;
+    top:20px;
+    right:20px;
+}
+
+.lang-switch button {
+    background:none;
+    border:1px solid #6c9a7d;
+    padding:5px 10px;
+    margin-left:5px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.lang-switch button:hover {
+    background:#6c9a7d;
+    color:white;
+}
+
+.container {
+    max-width:1000px;
+    margin:0 auto;
+    padding:80px 20px;
+}
+
+.hero {
+    background:#f4f7f5;
+    text-align:center;
+    padding:120px 20px;
+}
+
+.hero h1 {
+    font-size:44px;
+    font-weight:700;
+}
+
+.hero h2 {
+    font-size:18px;
+    color:#4f6b5c;
+    margin-top:10px;
+}
+
+.section-title {
+    font-size:26px;
+    font-weight:600;
+    margin-bottom:25px;
+    border-left:4px solid #6c9a7d;
+    padding-left:15px;
+}
+
+.text-block p {
+    margin-bottom:18px;
+    font-size:18px;
+}
+
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:40px;
+    margin-top:40px;
+}
+
+.card {
+    padding:25px;
+    border:1px solid #e3e9e5;
+    background:#fafcfa;
+}
+
+.gallery {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.gallery img {
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.contact {
+    background:#f4f7f5;
+}
+
+footer {
+    text-align:center;
+    padding:40px 20px;
+    font-size:14px;
+    color:#6b7d73;
+}
+</style>
+</head>
+
+<body>
+
+<div class="lang-switch">
+    <button onclick="setLang('ru')">RU</button>
+    <button onclick="setLang('ua')">UA</button>
+    <button onclick="setLang('en')">EN</button>
+</div>
+
+<section class="hero">
+    <h1>HOPE</h1>
+    <h2 data-ru="Дом для лап повсюду"
+        data-ua="Дім для лап всюди"
+        data-en="Home Of Paws Everywhere">
+        Home Of Paws Everywhere
+    </h2>
+</section>
+
+<section class="container">
+    <div class="section-title"
+         data-ru="О фонде"
+         data-ua="Про фонд"
+         data-en="About the Foundation">
+         About the Foundation
+    </div>
+
+    <div class="text-block">
+        <p data-ru="HOPE — волонтёрский фонд помощи бездомным и брошенным животным."
+           data-ua="HOPE — волонтерський фонд допомоги бездомним і покинутим тваринам."
+           data-en="HOPE is a volunteer-based animal rescue foundation helping homeless and abandoned animals.">
+           HOPE is a volunteer-based animal rescue foundation helping homeless and abandoned animals.
+        </p>
+
+        <p data-ru="Мы обеспечиваем лечение, стерилизацию, уход и поиск любящих семей."
+           data-ua="Ми забезпечуємо лікування, стерилізацію, догляд та пошук люблячих родин."
+           data-en="We provide medical treatment, sterilization, care and responsible adoption.">
+           We provide medical treatment, sterilization, care and responsible adoption.
+        </p>
+    </div>
+</section>
+
+<section class="container">
+    <div class="section-title"
+         data-ru="Наша работа"
+         data-ua="Наша робота"
+         data-en="Our Work">
+         Our Work
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3 data-ru="Лечение"
+                data-ua="Лікування"
+                data-en="Medical Treatment">Medical Treatment</h3>
+        </div>
+
+        <div class="card">
+            <h3 data-ru="Стерилизация"
+                data-ua="Стерилізація"
+                data-en="Sterilization">Sterilization</h3>
+        </div>
+
+        <div class="card">
+            <h3 data-ru="Уход"
+                data-ua="Догляд"
+                data-en="Care">Care</h3>
+        </div>
+
+        <div class="card">
+            <h3 data-ru="Поиск семьи"
+                data-ua="Пошук родини"
+                data-en="Adoption">Adoption</h3>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <div class="section-title"
+         data-ru="Спасённые животные"
+         data-ua="Врятовані тварини"
+         data-en="Rescued Animals">
+         Rescued Animals
+    </div>
+
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a">
+        <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e">
+        <img src="https://images.unsplash.com/photo-1601758123927-196b9f3b24f9">
+    </div>
+</section>
+
+<section class="container contact">
+    <div class="section-title"
+         data-ru="Контакты"
+         data-ua="Контакти"
+         data-en="Contact">
+         Contact
+    </div>
+
+    <p>Email: hope.foundation@email.com</p>
+    <p>Telegram: @hope_rescue</p>
+</section>
+
+<footer>
+    © 2026 HOPE — Home Of Paws Everywhere
+</footer>
+
+<script>
+function setLang(lang) {
+    document.querySelectorAll("[data-" + lang + "]").forEach(el => {
+        el.innerText = el.getAttribute("data-" + lang);
+    });
+}
+</script>
+
+</body>
+</html>
+
