@@ -11,51 +11,64 @@
 body{
 margin:0;
 font-family:'Inter',sans-serif;
-background:#f4f7f5;
-color:#1c2b24;
+background:#f2f4f3;
+color:#1e2a24;
 line-height:1.7;
 }
 
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:white;
+position:fixed;
+width:100%;
+top:0;
+z-index:1000;
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+.lang-switch button{
+background:none;
+border:none;
+font-weight:600;
+margin-left:15px;
+cursor:pointer;
+color:#1e2a24;
+}
+
 .hero{
-background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
-url('https://picsum.photos/1600/900?animal');
-background-size:cover;
-background-position:center;
-color:white;
+padding:200px 20px 140px;
 text-align:center;
-padding:160px 20px;
+background:#1f3a30;
+color:white;
 }
 
 .hero h1{
-font-size:70px;
-font-weight:800;
+font-size:60px;
 letter-spacing:3px;
 margin-bottom:10px;
 }
 
-.hero p{
-font-size:20px;
-max-width:700px;
-margin:20px auto 0;
-}
-
 .section{
-padding:90px 20px;
+padding:100px 20px;
 max-width:1100px;
 margin:auto;
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+
+.section.visible{
+opacity:1;
+transform:translateY(0);
 }
 
 .section h2{
 text-align:center;
 font-size:34px;
 margin-bottom:50px;
-font-weight:700;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
 }
 
 .card{
@@ -63,17 +76,31 @@ background:white;
 padding:35px;
 border-radius:20px;
 box-shadow:0 15px 40px rgba(0,0,0,0.05);
-transition:0.4s;
+margin-bottom:30px;
 }
 
-.card:hover{
-transform:translateY(-8px);
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
 }
 
-.soft-bg{
-background:#eaf2ed;
+.soft{
+background:#e6ece8;
 border-radius:30px;
-padding:70px 40px;
+padding:60px 40px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+margin-top:40px;
+}
+
+.gallery img{
+width:100%;
+border-radius:20px;
 }
 
 .donation{
@@ -84,47 +111,20 @@ padding:80px 40px;
 text-align:center;
 }
 
-.donation h2{
-color:white;
-}
-
-.donation-buttons{
-margin-top:40px;
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:20px;
-}
-
 .btn{
+display:inline-block;
 background:white;
 color:#1f3a30;
 padding:14px 28px;
 border-radius:40px;
 text-decoration:none;
 font-weight:600;
-transition:0.3s;
-}
-
-.btn:hover{
-opacity:0.85;
-}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-margin-top:40px;
-}
-
-.gallery img{
-width:100%;
-border-radius:20px;
+margin:10px;
 }
 
 footer{
 text-align:center;
-padding:50px 20px;
+padding:60px 20px;
 font-size:14px;
 color:#6b7c73;
 }
@@ -133,84 +133,121 @@ color:#6b7c73;
 
 <body>
 
+<header>
+<div><strong>HOPE</strong></div>
+<div class="lang-switch">
+<button onclick="setLang('en')">ENG</button>
+<button onclick="setLang('ua')">UA</button>
+<button onclick="setLang('ru')">RU</button>
+</div>
+</header>
+
 <div class="hero">
 <h1>HOPE</h1>
-<p>Home Of Paws Everywhere — rescuing abandoned animals in Kharkiv, Ukraine and giving them a second chance.</p>
+<p id="heroText"></p>
+</div>
+
+<div class="section" id="who">
+<h2 id="whoTitle"></h2>
+<div class="card" id="whoText"></div>
 </div>
 
 <div class="section">
-<h2>Who We Are</h2>
-<div class="card">
-<p>
-HOPE (Home Of Paws Everywhere) is a small independent volunteer initiative based in Kharkiv, Ukraine.
-We rescue abandoned and homeless animals from the streets, yards and dangerous areas.
-Many are injured, sick or left behind.
-We take responsibility for each animal — from rescue to a safe permanent home.
-</p>
+<h2 id="whatTitle"></h2>
+<div class="cards" id="whatText"></div>
 </div>
+
+<div class="section soft">
+<h2 id="whyTitle"></h2>
+<p id="whyText"></p>
 </div>
 
 <div class="section">
-<h2>What We Do</h2>
-<div class="cards">
-<div class="card">🩺 <strong>Medical Treatment</strong><br>Injuries, infections, full recovery.</div>
-<div class="card">✂️ <strong>Sterilization</strong><br>Stopping suffering and overpopulation.</div>
-<div class="card">🧼 <strong>Daily Care</strong><br>Rehabilitation and safe shelter.</div>
-<div class="card">🏡 <strong>Adoption</strong><br>Finding loving permanent families.</div>
-</div>
-</div>
-
-<div class="section soft-bg">
-<h2>Why Your Support Matters</h2>
-<p>
-Kharkiv is a frontline city. The number of abandoned animals grows every month while resources are extremely limited.
-Without support, animals cannot receive treatment, sterilization stops, and rescues become impossible.
-Your help directly saves lives.
-</p>
-</div>
-
-<div class="section">
-<h2>How Your Donation Is Used</h2>
-<div class="cards">
-<div class="card">Veterinary clinics & medicines</div>
-<div class="card">Sterilization costs</div>
-<div class="card">Food and basic supplies</div>
-<div class="card">Emergency treatment</div>
-</div>
-<p style="margin-top:40px;text-align:center;">
-We work without salaries — only real help, real animals, real results.
-</p>
-</div>
-
-<div class="section soft-bg">
-<h2>Transparency</h2>
-<p>
-We regularly share photos and videos of rescued animals, treatment progress, and adoption success stories.
-You can always see who you are helping and how.
-</p>
+<h2>Rescued Animals</h2>
 <div class="gallery">
-<img src="https://picsum.photos/400/300?dog">
-<img src="https://picsum.photos/400/300?cat">
-<img src="https://picsum.photos/400/300?rescue">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
 </div>
 </div>
 
 <div class="section donation">
-<h2>Support HOPE</h2>
-<p>If you want to help homeless animals survive and find a home, you can support us.</p>
-
-<div class="donation-buttons">
-<a href="#" class="btn">One-Time Donation</a>
-<a href="#" class="btn">Monthly Support</a>
+<h2 id="supportTitle"></h2>
+<p id="supportText"></p>
 <a href="#" class="btn">PayPal</a>
 <a href="#" class="btn">Patreon</a>
 </div>
-</div>
 
 <footer>
-© 2026 HOPE — Home Of Paws Everywhere  
-Volunteer Animal Rescue Initiative, Kharkiv, Ukraine
+© 2026 HOPE — Kharkiv, Ukraine
 </footer>
+
+<script>
+const content = {
+en:{
+hero:"Home Of Paws Everywhere — rescuing abandoned animals in Kharkiv, Ukraine.",
+whoTitle:"Who We Are",
+whoText:"HOPE is a small independent volunteer initiative in Kharkiv. We rescue abandoned and injured animals and take responsibility for each one until adoption.",
+whatTitle:"What We Do",
+whatItems:["Medical treatment","Sterilization programs","Daily care and rehabilitation","Finding permanent homes"],
+whyTitle:"Why Support Matters",
+whyText:"Kharkiv is a frontline city. Resources are limited. Your help directly saves lives.",
+supportTitle:"Support HOPE",
+supportText:"One-time or monthly support helps us continue rescue, treatment and adoption work."
+},
+ua:{
+hero:"Home Of Paws Everywhere — порятунок покинутих тварин у Харкові.",
+whoTitle:"Хто ми",
+whoText:"HOPE — незалежна волонтерська ініціатива у Харкові. Ми рятуємо покинутих і поранених тварин та супроводжуємо їх до адопції.",
+whatTitle:"Що ми робимо",
+whatItems:["Медичне лікування","Стерилізація","Догляд та реабілітація","Пошук родин"],
+whyTitle:"Чому важлива підтримка",
+whyText:"Харків — прифронтове місто. Ресурси обмежені. Ваша допомога рятує життя.",
+supportTitle:"Підтримати HOPE",
+supportText:"Разова або щомісячна допомога дозволяє нам продовжувати рятувати тварин."
+},
+ru:{
+hero:"Home Of Paws Everywhere — спасение бездомных животных в Харькове.",
+whoTitle:"Кто мы",
+whoText:"HOPE — независимая волонтёрская инициатива в Харькове. Мы спасаем животных и сопровождаем их до устройства в семью.",
+whatTitle:"Что мы делаем",
+whatItems:["Лечение","Стерилизация","Уход и реабилитация","Поиск постоянного дома"],
+whyTitle:"Почему важна поддержка",
+whyText:"Харьков — прифронтовой город. Ресурсы ограничены. Ваша помощь спасает жизни.",
+supportTitle:"Поддержать HOPE",
+supportText:"Разовая или ежемесячная поддержка помогает нам продолжать спасать животных."
+}
+};
+
+function setLang(lang){
+document.getElementById("heroText").innerText=content[lang].hero;
+document.getElementById("whoTitle").innerText=content[lang].whoTitle;
+document.getElementById("whoText").innerText=content[lang].whoText;
+document.getElementById("whatTitle").innerText=content[lang].whatTitle;
+document.getElementById("whyTitle").innerText=content[lang].whyTitle;
+document.getElementById("whyText").innerText=content[lang].whyText;
+document.getElementById("supportTitle").innerText=content[lang].supportTitle;
+document.getElementById("supportText").innerText=content[lang].supportText;
+
+let list="";
+content[lang].whatItems.forEach(item=>{
+list+=`<div class="card">${item}</div>`;
+});
+document.getElementById("whatText").innerHTML=list;
+}
+
+setLang("en");
+
+const sections=document.querySelectorAll(".section");
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+const top=sec.getBoundingClientRect().top;
+if(top<window.innerHeight-100){
+sec.classList.add("visible");
+}
+});
+});
+</script>
 
 </body>
 </html>
