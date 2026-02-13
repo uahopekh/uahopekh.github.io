@@ -35,6 +35,99 @@
       color:var(--ink);
       line-height:1.65;
     }
+/* STORIES: Before / After */
+.stories{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:18px;
+}
+
+.story{
+  grid-column:span 4;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:22px;
+  box-shadow:0 14px 30px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+
+@media (max-width: 980px){
+  .story{ grid-column:span 12; }
+}
+
+.storyTop{
+  display:flex;
+  justify-content:space-between;
+  padding:14px 16px 0;
+}
+
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.02em;
+}
+
+.tag.before{
+  background:rgba(31,58,48,.08);
+  border:1px solid rgba(31,58,48,.14);
+  color:var(--brand);
+}
+
+.tag.after{
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(31,58,48,.18);
+  color:var(--brand2);
+}
+
+.ba{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  padding:12px 16px 0;
+}
+
+.ba figure{
+  margin:0;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,.06);
+  background:#fff;
+}
+
+.ba img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  display:block;
+}
+
+.ba figcaption{
+  padding:10px 10px;
+  font-size:13px;
+  color:var(--muted);
+  border-top:1px solid rgba(0,0,0,.06);
+  background:linear-gradient(180deg,#fff,#fbfcfb);
+}
+
+.storyText{
+  padding:14px 16px 18px;
+}
+
+.storyText h3{
+  margin:8px 0 8px;
+  font-size:16.5px;
+}
+
+.storyText p{
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
+}
 
     /* Header */
     header{
@@ -530,6 +623,91 @@ justify-content: center;
       </div>
     </div>
   </section>
+<!-- STORIES: BEFORE / AFTER -->
+<section id="stories" class="reveal">
+  <h2 class="title" data-i18n="storiesTitle">Rescue stories</h2>
+  <p class="subtitle" data-i18n="storiesSubtitle">Before → After: real animals, real progress</p>
+
+  <div class="stories">
+    <!-- Story 1 -->
+    <article class="story">
+      <div class="storyTop">
+        <span class="tag before" data-i18n="tagBefore">Before</span>
+        <span class="tag after" data-i18n="tagAfter">After</span>
+      </div>
+
+      <div class="ba">
+        <figure>
+          <img src="story1_before.jpg" alt="Before rescue">
+          <figcaption data-i18n="s1Before">Found on the street</figcaption>
+        </figure>
+        <figure>
+          <img src="story1_after.jpg" alt="After rescue">
+          <figcaption data-i18n="s1After">Recovered and safe</figcaption>
+        </figure>
+      </div>
+
+      <div class="storyText">
+        <h3 data-i18n="s1Title">Puppy: treatment and warmth</h3>
+        <p data-i18n="s1Text">
+          We provided medical care, food and a safe place. Now this pup is healthy and ready for adoption.
+        </p>
+      </div>
+    </article>
+
+    <!-- Story 2 -->
+    <article class="story">
+      <div class="storyTop">
+        <span class="tag before" data-i18n="tagBefore">Before</span>
+        <span class="tag after" data-i18n="tagAfter">After</span>
+      </div>
+
+      <div class="ba">
+        <figure>
+          <img src="story2_before.jpg" alt="Before rescue">
+          <figcaption data-i18n="s2Before">Dirty and exhausted</figcaption>
+        </figure>
+        <figure>
+          <img src="story2_after.jpg" alt="After rescue">
+          <figcaption data-i18n="s2After">Cleaned and treated</figcaption>
+        </figure>
+      </div>
+
+      <div class="storyText">
+        <h3 data-i18n="s2Title">Dog: wash, meds, recovery</h3>
+        <p data-i18n="s2Text">
+          Grooming, vet visit and treatment made a huge difference. The dog is gaining strength every day.
+        </p>
+      </div>
+    </article>
+
+    <!-- Story 3 -->
+    <article class="story">
+      <div class="storyTop">
+        <span class="tag before" data-i18n="tagBefore">Before</span>
+        <span class="tag after" data-i18n="tagAfter">After</span>
+      </div>
+
+      <div class="ba">
+        <figure>
+          <img src="story3_before.jpg" alt="Before rescue">
+          <figcaption data-i18n="s3Before">Cold night outside</figcaption>
+        </figure>
+        <figure>
+          <img src="story3_after.jpg" alt="After rescue">
+          <figcaption data-i18n="s3After">Safe and cared for</figcaption>
+        </figure>
+      </div>
+
+      <div class="storyText">
+        <h3 data-i18n="s3Title">Street dog: safety first</h3>
+        <p data-i18n="s3Text">
+          We secured a safe place, food, and vet check. Next step is a loving family.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
 
   <!-- SUPPORT -->
   <section id="support" class="reveal">
