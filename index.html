@@ -500,6 +500,30 @@ justify-content: center;
 }
 .btnTg:hover{ transform:translateY(-1px); box-shadow:0 18px 38px rgba(0,0,0,.18); }
 .btnTg svg{ width:18px; height:18px; }
+/* Mobile fix: prevent sideways overflow */
+html, body { max-width: 100%; overflow-x: hidden; }
+* { box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
+
+/* If your story cards container is #stories */
+#stories { width: 100%; max-width: 100%; }
+#stories .story { width: 100%; max-width: 100%; }
+
+/* Make before/after row wrap on small screens */
+#stories .ba {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* Ensure images/cards never exceed container */
+#stories .ba img, 
+#stories .ba .card, 
+#stories .story img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
 
   </style>
 </head>
