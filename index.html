@@ -524,6 +524,15 @@ img { max-width: 100%; height: auto; }
   max-width: 100%;
   display: block;
 }
+/* FIX: gallery overflow on mobile (shots were spanning extra columns) */
+.gallery { width: 100%; max-width: 100%; }
+.shot { grid-column: auto !important; } /* override grid-column:span 4 */
+
+@media (max-width: 700px){
+  .gallery { grid-template-columns: 1fr !important; }
+  .shot { width: 100%; }
+  .shot img { height: auto !important; } /* optional: removes forced 320px on small screens */
+}
 
   </style>
 </head>
