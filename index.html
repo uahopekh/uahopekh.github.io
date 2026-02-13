@@ -28,96 +28,231 @@
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html,body{margin:0;padding:0}
     body{
-      margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
       color:var(--ink);
-      background:radial-gradient(1200px 800px at 15% -10%, rgba(46,87,72,.18), transparent 60%),
-                 radial-gradient(900px 600px at 85% 10%, rgba(31,58,48,.12), transparent 55%),
-                 var(--bg);
-      line-height:1.55;
+      line-height:1.65;
     }
+/* STORIES: Before / After */
+.stories{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:18px;
+}
 
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
+.story{
+  grid-column:span 4;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:22px;
+  box-shadow:0 14px 30px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+
+@media (max-width: 980px){
+  .story{ grid-column:span 12; }
+}
+
+.storyTop{
+  display:flex;
+  justify-content:space-between;
+  padding:14px 16px 0;
+}
+
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.02em;
+}
+
+.tag.before{
+  background:rgba(31,58,48,.08);
+  border:1px solid rgba(31,58,48,.14);
+  color:var(--brand);
+}
+
+.tag.after{
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(31,58,48,.18);
+  color:var(--brand2);
+}
+
+.ba{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  padding:12px 16px 0;
+}
+
+.ba figure{
+  margin:0;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(0,0,0,.06);
+  background:#fff;
+}
+
+.ba img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+
+}
+
+.ba figcaption{
+  padding:10px 10px;
+  font-size:13px;
+  color:var(--muted);
+  border-top:1px solid rgba(0,0,0,.06);
+  background:linear-gradient(180deg,#fff,#fbfcfb);
+}
+
+.storyText{
+  padding:14px 16px 18px;
+}
+
+.storyText h3{
+  margin:8px 0 8px;
+  font-size:16.5px;
+}
+
+.storyText p{
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
+}
+
+    /* Header */
     header{
-      position:fixed; left:0; right:0; top:0;
-      background:rgba(244,247,245,.82);
-      backdrop-filter: blur(12px);
-      border-bottom:1px solid rgba(0,0,0,.06);
+      position:fixed;
+      top:0;left:0;right:0;
       z-index:50;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:saturate(160%) blur(10px);
+      border-bottom:1px solid rgba(0,0,0,.06);
     }
-    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0;}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.02em;}
-    .logo{
-      width:42px; height:42px; border-radius:14px;
-      display:grid; place-items:center;
-      background:linear-gradient(135deg, rgba(31,58,48,.12), rgba(46,87,72,.18));
-      border:1px solid rgba(0,0,0,.06);
-      box-shadow:0 10px 26px rgba(0,0,0,.06);
-      font-weight:900;
-      color:var(--brand);
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
     }
-
-    nav{display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
-    nav a{
-      text-decoration:none;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
       font-weight:800;
-      color:rgba(30,42,36,.82);
+      letter-spacing:.08em;
+    }
+    .badge{
+      width:34px;height:34px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      box-shadow:0 10px 25px rgba(31,58,48,.25);
+      display:grid;place-items:center;
+      color:#fff;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+    .navlinks{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .navlinks a{
+      text-decoration:none;
+      font-weight:700;
+      color:var(--brand);
+      opacity:.78;
       padding:8px 10px;
       border-radius:12px;
-      transition:all .18s ease;
+      transition:.15s ease;
     }
-    nav a:hover{background:rgba(31,58,48,.08); color:var(--brand);}
+    .navlinks a:hover{opacity:1;background:rgba(31,58,48,.06)}
+    @media (max-width: 900px){
+      .navlinks{display:none;}
+    }
 
     .lang{
-      display:flex; gap:0;
-      background:rgba(255,255,255,.6);
-      border:1px solid rgba(0,0,0,.06);
+      display:flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(31,58,48,.06);
+      border:1px solid rgba(31,58,48,.14);
       border-radius:999px;
-      padding:4px;
-      box-shadow:0 10px 22px rgba(0,0,0,.06);
+      padding:6px;
     }
     .lang button{
       border:0;
       background:transparent;
       padding:8px 12px;
       border-radius:999px;
-      font-weight:900;
       cursor:pointer;
-      color:rgba(30,42,36,.76);
-    }
-    .lang button.active{
-      background:#fff;
+      font-weight:800;
       color:var(--brand);
-      box-shadow:0 10px 18px rgba(0,0,0,.08);
+      opacity:.72;
+      transition:.2s ease;
     }
+    .lang button[aria-pressed="true"]{
+      background:#fff;
+      opacity:1;
+      box-shadow:0 8px 18px rgba(0,0,0,.08);
+    }
+    .lang button:hover{opacity:1}
 
-    main{padding-top:74px}
-    section{padding:42px 0}
+    /* Layout */
+    main{
+  padding-top:90px;
+}
 
+@media (max-width: 600px){
+  main{
+    padding-top:110px;
+  }
+}
+
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px;}
+
+    /* Hero */
     .hero{
-      position:relative;
-      border-radius:var(--radius2);
-      overflow:hidden;
-      margin-bottom:18px;
-      box-shadow:var(--shadow2);
-      background:
-        radial-gradient(900px 600px at 15% 30%, rgba(255,255,255,.18), transparent 60%),
-        linear-gradient(180deg, rgba(31,58,48,.95), rgba(31,58,48,.88));
-      color:#fff;
+  margin-top: 80px;
+  position:relative;
+  border-radius:var(--radius2);
+  overflow:hidden;
+  margin-bottom:18px;
+  box-shadow:var(--shadow2);
+  background:
+        radial-gradient(1200px 600px at 20% 20%, rgba(255,255,255,.14), transparent 60%),
+        linear-gradient(135deg, rgba(31,58,48,.96), rgba(46,87,72,.92));
     }
-    .heroInner{
+    .heroGrid{
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
+      grid-template-columns:1.2fr .95fr;
       gap:26px;
-      padding:40px;
+      padding:44px;
       align-items:center;
     }
+    @media (max-width: 920px){ .heroGrid{grid-template-columns:1fr; padding:34px;} }
 
     .kicker{
-      display:inline-flex; gap:10px; align-items:center;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
       padding:8px 12px;
       border-radius:999px;
       background:rgba(255,255,255,.12);
@@ -125,169 +260,157 @@
       color:#fff;
       font-weight:800;
       letter-spacing:.02em;
-      max-width: 100%;
-      flex-wrap: wrap;
-      text-align: center;
-      justify-content: center;
+      
+     max-width: 100%;
+flex-wrap: wrap;
+text-align: center;
+justify-content: center;
+
     }
-    .dot{width:10px; height:10px; border-radius:50%; background:#93f3c0; box-shadow:0 0 0 6px rgba(147,243,192,.16);}
-    .hero h1{margin:14px 0 10px; font-size:54px; line-height:1.0; letter-spacing:-.02em;}
-    .hero p{margin:0 0 16px; color:rgba(255,255,255,.92); font-size:17px;}
-    .bullets{display:flex; gap:10px; flex-wrap:wrap; color:rgba(255,255,255,.9); font-weight:700}
-    .bullets span{padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.14)}
+    .kdot{width:10px;height:10px;border-radius:99px;background:#b7f3cf}
+    .hero h1{
+      color:#fff;
+      font-size:52px;
+      line-height:1.05;
+      margin:16px 0 12px;
+      letter-spacing:.04em;
+      font-weight:900;
+    }
+    @media (max-width: 520px){ .hero h1{font-size:40px} }
+    .hero p{
+      color:rgba(255,255,255,.90);
+      font-size:18px;
+      margin:0 0 18px;
+      max-width:60ch;
+    }
     .heroMedia{
-      height:100%;
-      min-height:300px;
       border-radius:22px;
       overflow:hidden;
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.14);
-      box-shadow:0 18px 40px rgba(0,0,0,.22);
-      position:relative;
-    }
-    .heroMedia img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      filter:saturate(1.05) contrast(1.04);
-      transform:scale(1.02);
-    }
-    .heroMedia::after{
-      content:"";
-      position:absolute; inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.18));
-      pointer-events:none;
-    }
-
-    .grid2{
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+      box-shadow:0 16px 40px rgba(0,0,0,.18);
+      min-height:320px;
       display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:18px;
-      align-items:stretch;
     }
-    @media (max-width: 980px){
-      .heroInner{grid-template-columns:1fr; padding:26px}
-      .hero h1{font-size:44px}
-      nav{display:none}
-      main{padding-top:82px}
-      .grid2{grid-template-columns:1fr}
+    .heroMedia img{width:100%;height:100%;object-fit:cover;opacity:.92;filter:saturate(1.02) contrast(1.02);}
+
+    /* Sections */
+    section{padding:56px 0}
+    .title{
+      text-align:center;
+      margin:0 0 12px;
+      font-size:30px;
+      letter-spacing:-.02em;
+    }
+    .subtitle{
+      text-align:center;
+      margin:0 auto 34px;
+      max-width:76ch;
+      color:var(--muted);
+      font-size:17px;
     }
 
-    @media (max-width: 600px){
-      .kicker{
-        font-size: 13px;
-        line-height: 1.2;
-      }
-    }
-
-    .card{
-      background:rgba(255,255,255,.78);
+    .panel{
+      background:var(--panel);
       border:1px solid rgba(0,0,0,.06);
       border-radius:var(--radius2);
       box-shadow:var(--shadow);
       padding:26px;
-      overflow:hidden;
     }
-    .title{font-size:28px; letter-spacing:-.02em; margin:0 0 12px}
-    .subtitle{margin:0 0 22px; color:var(--muted)}
-    .hr{height:1px; background:rgba(0,0,0,.06); margin:22px 0}
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(31,58,48,.08);
-      border:1px solid rgba(31,58,48,.14);
-      color:var(--brand);
-      font-weight:900;
-      letter-spacing:.02em;
-      font-size:12px;
+    .soft{
+      background:var(--soft);
+      border:1px solid rgba(31,58,48,.10);
     }
 
-    .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
-    .list li{margin:8px 0}
-
-    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
-    .chip{
-      padding:10px 12px;
-      border-radius:16px;
-      background:rgba(255,255,255,.8);
-      border:1px solid rgba(0,0,0,.06);
-      font-weight:800;
-      color:rgba(30,42,36,.86);
-    }
-
-    .stats{
+    .grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-      margin-top:14px;
-    }
-    .stat{
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(0,0,0,.06);
-      border-radius:18px;
-      padding:14px 14px;
-      box-shadow:0 12px 22px rgba(0,0,0,.05);
-    }
-    .stat strong{display:block; font-size:18px}
-    .stat span{color:var(--muted); font-weight:700; font-size:12px}
-
-    @media (max-width: 780px){
-      .stats{grid-template-columns:1fr}
-    }
-
-    .cols{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
+      grid-template-columns:repeat(12,1fr);
       gap:18px;
-      align-items:stretch;
     }
-    @media (max-width: 980px){
-      .cols{grid-template-columns:1fr}
-    }
+    .col-7{grid-column:span 7}
+    .col-5{grid-column:span 5}
+    .col-12{grid-column:span 12}
+    @media (max-width: 920px){ .col-7,.col-5{grid-column:span 12} }
 
-    .shots{
+    .rich p{margin:0 0 12px;color:var(--muted);font-size:16.5px}
+    .rich p:last-child{margin-bottom:0}
+    .lead{color:var(--ink)!important;font-size:17.5px!important;font-weight:600}
+
+    .cards{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
+      grid-template-columns:repeat(12,1fr);
+      gap:16px;
     }
-    .shot{
+    .card{
+      grid-column:span 6;
       background:#fff;
       border:1px solid rgba(0,0,0,.06);
-      border-radius:18px;
-      overflow:hidden;
-      box-shadow:0 14px 30px rgba(0,0,0,.06);
-      display:flex;
-      flex-direction:column;
-      min-height:260px;
+      border-radius:var(--radius);
+      padding:18px 18px;
+      box-shadow:0 10px 24px rgba(0,0,0,.05);
     }
-    .shot img{
-      width:100%;
-      height:260px;
-      object-fit:cover;
-      display:block;
-      filter:saturate(1.03) contrast(1.03);
-    }
-    .shot .cap{
-      padding:12px 12px;
-      font-weight:900;
-      color:rgba(30,42,36,.86);
-      border-top:1px solid rgba(0,0,0,.06);
-      background:linear-gradient(180deg, #fff, #f7faf8);
-      margin-top:auto;
-    }
-    @media (max-width: 980px){
-      .shots{grid-template-columns:1fr; }
-      .shot img{height:240px}
+    @media (max-width: 920px){ .card{grid-column:span 12} }
+    .card b{display:flex;align-items:center;gap:10px;font-size:16.5px}
+    .card p{margin:10px 0 0;color:var(--muted);font-size:15.5px}
+    .icon{
+      width:30px;height:30px;border-radius:10px;
+      background:rgba(31,58,48,.08);
+      border:1px solid rgba(31,58,48,.12);
+      display:grid;place-items:center;
+      font-size:16px;
     }
 
-    .ctaRow{
-      display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:flex-start;
-      margin-top:12px;
+    .list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:16px;
+    }
+    .list li{margin:8px 0}
+
+    /* Gallery */
+    .gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:20px;
+    }
+    .shot{
+      grid-column:span 4;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.06);
+      background:#fff;
+      box-shadow:0 14px 30px rgba(0,0,0,.06);
+      min-height:260px;
+    }
+    @media (max-width: 920px){ .shot{grid-column:span 12} }
+    .shot img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:16px;
+}
+    .shot .label{
+      padding:12px 14px;
+      color:var(--muted);
+      font-size:14px;
+      border-top:1px solid rgba(0,0,0,.06);
+      background:linear-gradient(180deg,#fff, #fbfcfb);
+    }
+
+    /* Donation */
+    .donate{
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      color:#fff;
+      border:1px solid rgba(255,255,255,.16);
+    }
+    .donate .subtitle{color:rgba(255,255,255,.86)}
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+      margin-top:18px;
     }
     .btn{
       display:inline-flex;
@@ -295,816 +418,644 @@
       justify-content:center;
       gap:10px;
       padding:12px 16px;
-      border-radius:16px;
-      border:1px solid rgba(0,0,0,.08);
-      background:#fff;
-      box-shadow:0 12px 22px rgba(0,0,0,.06);
-      font-weight:900;
-      text-decoration:none;
-      cursor:pointer;
-      transition:transform .12s ease, box-shadow .12s ease;
-    }
-    .btn:hover{transform:translateY(-1px); box-shadow:0 18px 32px rgba(0,0,0,.08)}
-    .btn.primary{
-      background:linear-gradient(180deg, rgba(31,58,48,1), rgba(46,87,72,1));
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.20);
+      background:rgba(255,255,255,.12);
       color:#fff;
-      border-color:rgba(255,255,255,.12);
+      text-decoration:none;
+      font-weight:900;
+      letter-spacing:.01em;
+      transition:.2s ease;
     }
-    .btn.ghost{
-      background:rgba(255,255,255,.72);
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.16)}
+    .btn.primary{
+      background:#fff;
       color:var(--brand);
-      border-color:rgba(31,58,48,.16);
+      border-color:#fff;
+    }
+    .note{ text-align:center; font-size:13px; opacity:.86; margin-top:14px; }
+
+    /* Smooth reveal animation */
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+    .reveal.in{opacity:1; transform:translateY(0);}
+
+    button:focus-visible, a:focus-visible{
+      outline:3px solid var(--ring);
+      outline-offset:3px;
+      border-radius:12px;
     }
 
     footer{
-      padding:28px 0 44px;
-      color:rgba(30,42,36,.7);
-      font-weight:700;
-    }
-    footer .row{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;}
-    footer small{color:rgba(30,42,36,.62)}
-
-    /* reveal animation */
-    .reveal{opacity:0; transform:translateY(12px); transition:opacity .7s ease, transform .7s ease}
-    .reveal.in{opacity:1; transform:none}
-
-    /* STORIES: Before / After */
-    .stories{
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:18px;
-    }
-
-    .story{
-      grid-column:span 4;
-      background:#fff;
-      border:1px solid rgba(0,0,0,.06);
-      border-radius:22px;
-      box-shadow:0 14px 30px rgba(0,0,0,.06);
-      overflow:hidden;
-    }
-
-    @media (max-width: 980px){
-      .story{ grid-column:span 12; }
-    }
-
-    .storyTop{
-      display:flex;
-      justify-content:space-between;
-      padding:14px 16px 0;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      font-weight:800;
-      font-size:12px;
-      letter-spacing:.02em;
-    }
-
-    .tag.before{
-      background:rgba(31,58,48,.08);
-      border:1px solid rgba(31,58,48,.14);
-      color:var(--brand);
-    }
-
-    .tag.after{
-      background:rgba(255,255,255,.14);
-      border:1px solid rgba(31,58,48,.18);
-      color:var(--brand2);
-    }
-
-    .ba{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      padding:12px 16px 0;
-    }
-
-    .ba figure{
-      margin:0;
-      border-radius:16px;
-      overflow:hidden;
-      border:1px solid rgba(0,0,0,.06);
-      background:#fff;
-    }
-
-    .ba img{
-      width:100%;
-      height:210px;
-      object-fit:cover;
-      display:block;
-    }
-
-    .ba figcaption{
-      padding:10px 10px;
-      font-size:13px;
-      color:var(--muted);
-      border-top:1px solid rgba(0,0,0,.06);
-      background:linear-gradient(180deg,#fff,#fbfcfb);
-    }
-
-    .storyText{
-      padding:14px 16px 18px;
-    }
-
-    .storyText h3{
-      margin:8px 0 8px;
-      font-size:16.5px;
-    }
-
-    .storyText p{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
-    }
-
-    /* Lightbox (tap to view full photo) */
-    .lb{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.82);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-      z-index:9999;
-    }
-    .lb.open{ display:flex; }
-
-    .lb img{
-      max-width:min(1100px, 96vw);
-      max-height:92vh;
-      width:auto;
-      height:auto;
-      border-radius:18px;
-      box-shadow:0 30px 80px rgba(0,0,0,.45);
-    }
-
-    .lbCloseHint{
-      position:fixed;
-      top:14px;
-      right:16px;
-      color:rgba(255,255,255,.85);
-      font-weight:700;
+      padding:40px 18px 60px;
+      color:#6a7c73;
+      text-align:center;
       font-size:14px;
-      user-select:none;
     }
-
-    #stories .ba img{ cursor:zoom-in; }
+@media (max-width: 600px){
+  .kicker{
+    font-size: 13px;
+    line-height: 1.2;
+  }
+}
 
   </style>
 </head>
 
 <body>
 <header>
-  <div class="wrap topbar">
-    <div class="brand">
-      <div class="logo">H</div>
+  <div class="nav">
+    <div class="brand" aria-label="HOPE">
+      <div class="badge">H</div>
       <div>HOPE</div>
     </div>
 
-    <nav>
-      <a href="#about" data-i18n="navWho">Who we are</a>
-      <a href="#do" data-i18n="navDo">What we do</a>
+    <nav class="navlinks" aria-label="Sections">
+      <a href="#who" data-i18n="navWho">Who we are</a>
+      <a href="#what" data-i18n="navWhat">What we do</a>
       <a href="#support" data-i18n="navSupport">Support</a>
       <a href="#contact" data-i18n="navContact">Contact</a>
     </nav>
 
     <div class="lang" aria-label="Language switcher">
-      <button id="lang-en" class="active" onclick="setLang('en')">ENG</button>
-      <button id="lang-ua" onclick="setLang('ua')">UA</button>
-      <button id="lang-ru" onclick="setLang('ru')">RU</button>
+      <button type="button" id="btn-en" aria-pressed="true" onclick="setLang('en')">ENG</button>
+      <button type="button" id="btn-ua" aria-pressed="false" onclick="setLang('ua')">UA</button>
+      <button type="button" id="btn-ru" aria-pressed="false" onclick="setLang('ru')">RU</button>
     </div>
   </div>
 </header>
 
-<main>
-  <div class="wrap">
-    <section class="hero reveal in">
-      <div class="heroInner">
-        <div>
-          <div class="kicker">
-            <span class="dot"></span>
-            <span data-i18n="kicker">Kharkiv, Ukraine • Volunteer initiative</span>
-          </div>
-          <h1>HOPE</h1>
-          <p data-i18n="heroLead">
-            Home Of Paws Everywhere — we rescue abandoned and homeless animals and take responsibility from rescue to a safe home.
-          </p>
-          <div class="bullets" data-i18n="heroBullets">
-            <span>Treatment</span><span>Sterilization</span><span>Daily care</span><span>Adoption</span>
-          </div>
-
-          <div class="ctaRow" style="margin-top:18px">
-            <a class="btn primary" href="#support" data-i18n="heroCta1">Support HOPE</a>
-            <a class="btn ghost" href="#contact" data-i18n="heroCta2">Contact us</a>
-          </div>
-        </div>
-
-        <div class="heroMedia">
-          <img src="hero.jpg" alt="Rescued dog" />
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="reveal">
-      <div class="grid2">
-        <div class="card">
-          <h2 class="title">HOPE — Home Of Paws Everywhere</h2>
-          <p class="subtitle" data-i18n="whoIntroTitle"><strong>Who we are</strong></p>
-
-          <p data-i18n="whoP1">
-            HOPE (Home Of Paws Everywhere) is a small independent volunteer initiative based in Kharkiv, Ukraine.
-          </p>
-          <p data-i18n="whoP2">
-            We rescue abandoned and homeless animals from the streets, yards and dangerous areas of the city. Many of them are injured, sick, frightened or simply left behind.
-          </p>
-          <p data-i18n="whoP3">
-            We take responsibility for each animal we save — from the first day on the street to a safe home.
-          </p>
-
-          <div class="hr"></div>
-
-          <span class="pill" data-i18n="principlesTitle">Core principles</span>
-          <div class="chips" id="principlesChips">
-            <div class="chip">Care until adoption</div>
-            <div class="chip">No salaries</div>
-            <div class="chip">Transparency</div>
-            <div class="chip">Focus on treatment</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2 class="title" id="do" data-i18n="whatTitle">What we do</h2>
-          <p class="subtitle" data-i18n="whatSubtitle">Full-cycle care for homeless animals</p>
-
-          <ul class="list" id="whatList">
-            <li>Medical treatment (injuries, infections, recovery)</li>
-            <li>Sterilization / neutering</li>
-            <li>Daily care and rehabilitation</li>
-            <li>Finding families and permanent homes</li>
-          </ul>
-
-          <div class="hr"></div>
-
-          <p data-i18n="whatP1"><strong>We do not abandon animals halfway.</strong></p>
-          <p data-i18n="whatP2">Every animal stays with us until it is safe, healthy and adopted.</p>
-
-          <div class="stats">
-            <div class="stat">
-              <strong data-i18n="stat1">Treatment</strong>
-              <span data-i18n="stat1s">Vet care and medicines</span>
-            </div>
-            <div class="stat">
-              <strong data-i18n="stat2">Sterilization</strong>
-              <span data-i18n="stat2s">Stop suffering & overpopulation</span>
-            </div>
-            <div class="stat">
-              <strong data-i18n="stat3">Adoption</strong>
-              <span data-i18n="stat3s">Safe home, forever</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="reveal">
-      <div class="cols">
-        <div class="card">
-          <h2 class="title" data-i18n="whyTitle">Why your support matters</h2>
-          <p class="subtitle" data-i18n="whySubtitle">Kharkiv is a frontline city.</p>
-
-          <p data-i18n="whyP1">
-            The number of abandoned animals grows every month, while resources are extremely limited.
-          </p>
-
-          <p data-i18n="whyP2">
-            Without financial support: animals cannot be treated, sterilization cannot continue, rescued animals have nowhere to go.
-          </p>
-
-          <p data-i18n="whyP3"><strong>Your help directly saves lives.</strong></p>
-
-          <div class="hr"></div>
-
-          <span class="pill" data-i18n="withoutTitle">Without support</span>
-          <ul class="list" id="withoutList">
-            <li>Animals cannot be treated</li>
-            <li>Sterilization cannot continue</li>
-            <li>Rescued animals have nowhere to go</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2 class="title" data-i18n="donTitle">How your donation is used</h2>
-          <p class="subtitle" data-i18n="donSubtitle">Every euro goes directly to animals</p>
-
-          <ul class="list" id="donList">
-            <li>Veterinary clinics and medicines</li>
-            <li>Sterilization costs</li>
-            <li>Food and basic supplies</li>
-            <li>Emergency treatment</li>
-          </ul>
-
-          <div class="hr"></div>
-
-          <p data-i18n="donP1"><strong>We work without salaries</strong> — only real help, real animals, real results.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="reveal">
-      <div class="cols">
-        <div class="card">
-          <h2 class="title" data-i18n="transTitle">Transparency</h2>
-          <p class="subtitle" data-i18n="transSubtitle">You can always see who you are helping and how</p>
-
-          <ul class="list" id="transList">
-            <li>Photos and videos of rescued animals</li>
-            <li>Treatment progress</li>
-            <li>Adoptions and success stories</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <div class="shots">
-            <div class="shot">
-              <img src="hope_gallery_1.jpg" alt="">
-              <div class="cap" data-i18n="cap1">Rescue & care</div>
-            </div>
-            <div class="shot">
-              <img src="hope_gallery_2.jpg" alt="">
-              <div class="cap" data-i18n="cap2">Treatment progress</div>
-            </div>
-            <div class="shot">
-              <img src="hope_gallery_3.jpg" alt="">
-              <div class="cap" data-i18n="cap3">Adoption stories</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STORIES: BEFORE / AFTER -->
-    <section id="stories" class="reveal">
-      <h2 class="title" data-i18n="storiesTitle">Rescue stories</h2>
-      <p class="subtitle" data-i18n="storiesSubtitle">Before → After: real animals, real progress</p>
-
-      <div class="stories">
-        <!-- Story 1 -->
-        <article class="story">
-          <div class="storyTop">
-            <span class="tag before" data-i18n="tagBefore">Before</span>
-            <span class="tag after" data-i18n="tagAfter">After</span>
-          </div>
-
-          <div class="ba">
-            <figure>
-              <img src="story1_before.jpg" alt="Before rescue">
-              <figcaption data-i18n="s1Before">Found on the street</figcaption>
-            </figure>
-            <figure>
-              <img src="story1_after.jpg" alt="After rescue">
-              <figcaption data-i18n="s1After">Recovered and safe</figcaption>
-            </figure>
-          </div>
-
-          <div class="storyText">
-            <h3 data-i18n="s1Title">Puppy: treatment and warmth</h3>
-            <p data-i18n="s1Text">
-              We provided medical care, food and a safe place. Now this pup is healthy and ready for adoption.
-            </p>
-          </div>
-        </article>
-
-        <!-- Story 2 -->
-        <article class="story">
-          <div class="storyTop">
-            <span class="tag before" data-i18n="tagBefore">Before</span>
-            <span class="tag after" data-i18n="tagAfter">After</span>
-          </div>
-
-          <div class="ba">
-            <figure>
-              <img src="story2_before.jpg" alt="Before rescue">
-              <figcaption data-i18n="s2Before">Dirty and exhausted</figcaption>
-            </figure>
-            <figure>
-              <img src="story2_after.jpg" alt="After rescue">
-              <figcaption data-i18n="s2After">Cleaned and treated</figcaption>
-            </figure>
-          </div>
-
-          <div class="storyText">
-            <h3 data-i18n="s2Title">Dog: wash, meds, recovery</h3>
-            <p data-i18n="s2Text">
-              Grooming, vet visit and treatment made a huge difference. The dog is gaining strength every day.
-            </p>
-          </div>
-        </article>
-
-        <!-- Story 3 -->
-        <article class="story">
-          <div class="storyTop">
-            <span class="tag before" data-i18n="tagBefore">Before</span>
-            <span class="tag after" data-i18n="tagAfter">After</span>
-          </div>
-
-          <div class="ba">
-            <figure>
-              <img src="story3_before.jpg" alt="Before rescue">
-              <figcaption data-i18n="s3Before">Cold night outside</figcaption>
-            </figure>
-            <figure>
-              <img src="story3_after.jpg" alt="After rescue">
-              <figcaption data-i18n="s3After">Safe and cared for</figcaption>
-            </figure>
-          </div>
-
-          <div class="storyText">
-            <h3 data-i18n="s3Title">Street dog: safety first</h3>
-            <p data-i18n="s3Text">
-              We secured a safe place, food, and vet check. Next step is a loving family.
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="support" class="reveal">
-      <div class="card">
-        <h2 class="title" data-i18n="supportTitle">Support HOPE</h2>
-        <p class="subtitle" data-i18n="supportSubtitle">
-          If you want to help homeless animals survive and find a home, you can support us.
+<main class="wrap">
+  <!-- HERO -->
+  <div class="hero reveal" id="top">
+    <div class="heroGrid">
+      <div>
+        <div class="kicker"><span class="kdot"></span><span data-i18n="heroKicker">Kharkiv, Ukraine • Volunteer initiative</span></div>
+        <h1>HOPE</h1>
+        <p data-i18n="heroSubtitle">
+          Home Of Paws Everywhere — we rescue abandoned and homeless animals and take responsibility from rescue to a safe home.
         </p>
-
-        <div class="ctaRow">
-          <a class="btn primary" href="#" data-i18n="supportOne">One-time donation</a>
-          <a class="btn ghost" href="#" data-i18n="supportMonthly">Monthly support</a>
-          <a class="btn" href="#" data-i18n="supportPayPal">PayPal</a>
-          <a class="btn" href="#" data-i18n="supportPatreon">Patreon</a>
-          <a class="btn" href="#" data-i18n="supportBmac">Buy Me a Coffee</a>
-        </div>
-
-        <p style="margin-top:14px; color:var(--muted)" data-i18n="supportNote">
-          (payment links here: PayPal / Patreon / Buy Me a Coffee)
-        </p>
-
-        <div class="hr"></div>
-
-        <h3 style="margin:0 0 10px" data-i18n="missionTitle">Our mission</h3>
-        <p style="margin:0; color:var(--muted)" data-i18n="missionText">
-          To give every abandoned paw a chance for safety, care and a home — everywhere.
+        <p data-i18n="heroLine2">
+          Treatment • Sterilization • Daily care • Adoption
         </p>
       </div>
-    </section>
 
-    <section id="contact" class="reveal">
-      <div class="card">
-        <h2 class="title" data-i18n="contactTitle">Contact</h2>
-        <p class="subtitle" data-i18n="contactSubtitle">Write to us — we respond as soon as we can.</p>
-
-        <div class="ctaRow">
-          <a class="btn primary" href="mailto:hope.foundation@email.com" data-i18n="contactEmailBtn">Email</a>
-          <a class="btn ghost" href="https://t.me/hope_rescue" target="_blank" rel="noopener" data-i18n="contactTgBtn">Telegram</a>
-        </div>
-
-        <p style="margin-top:14px; color:var(--muted)" data-i18n="contactLine">
-          Email: hope.foundation@email.com • Telegram: @hope_rescue
-        </p>
+      <div class="heroMedia" aria-label="Animal rescue photo">
+        <!-- Замени на свои фото позже, если хочешь -->
+       <img src="hero2.jpg" alt="Rescued dog">
       </div>
-    </section>
-
-    <footer>
-      <div class="row">
-        <div><strong>© 2026 HOPE — Home Of Paws Everywhere</strong></div>
-        <small data-i18n="footerLine">Volunteer Animal Rescue Initiative • Kharkiv, Ukraine</small>
-      </div>
-    </footer>
+    </div>
   </div>
+
+  <!-- WHO WE ARE -->
+  <section id="who" class="reveal">
+    <h2 class="title">🐾 HOPE — Home Of Paws Everywhere</h2>
+    <p class="subtitle" data-i18n="whoSubtitle">Who we are</p>
+
+    <div class="grid">
+      <div class="panel col-7 rich">
+        <p class="lead" data-i18n="whoLead">
+          HOPE (Home Of Paws Everywhere) is a small independent volunteer initiative based in Kharkiv, Ukraine.
+        </p>
+        <p data-i18n="whoP1">
+          We rescue abandoned and homeless animals from the streets, yards and dangerous areas of the city.
+          Many of them are injured, sick, frightened or simply left behind.
+        </p>
+        <p data-i18n="whoP2">
+          We take responsibility for each animal we save — from the first day on the street to a safe home.
+        </p>
+      </div>
+
+      <div class="panel col-5 soft">
+        <h3 style="margin:0 0 10px" data-i18n="whoBoxTitle">Core principles</h3>
+        <ul class="list" style="margin:0" id="principlesList">
+          <!-- Filled by JS -->
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section id="what" class="reveal">
+    <h2 class="title" data-i18n="whatTitle">What we do</h2>
+    <p class="subtitle" data-i18n="whatSubtitle">Full-cycle care for homeless animals</p>
+
+    <div class="cards" id="whatCards">
+      <!-- Filled by JS -->
+    </div>
+
+    <div class="panel soft" style="margin-top:18px">
+      <b data-i18n="noHalfwayTitle">We do not abandon animals halfway.</b>
+      <div style="height:8px"></div>
+      <div style="color:var(--muted)" data-i18n="noHalfwayText">
+        Every animal stays with us until it is safe, healthy and adopted.
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY SUPPORT MATTERS -->
+  <section id="why" class="reveal">
+    <h2 class="title" data-i18n="whyTitle">Why your support matters</h2>
+
+    <div class="grid">
+      <div class="panel col-7 rich">
+        <p class="lead" data-i18n="whyLead">Kharkiv is a frontline city.</p>
+        <p data-i18n="whyP1">
+          The number of abandoned animals grows every month, while resources are extremely limited.
+        </p>
+        <p data-i18n="whyP2">
+          Without financial support: animals cannot be treated, sterilization cannot continue, rescued animals have nowhere to go.
+        </p>
+        <p data-i18n="whyP3"><b>Your help directly saves lives.</b></p>
+      </div>
+
+      <div class="panel col-5 soft">
+        <h3 style="margin:0 0 10px" data-i18n="whyBoxTitle">Without support</h3>
+        <ul class="list" style="margin:0" id="withoutList">
+          <!-- Filled by JS -->
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW DONATION IS USED -->
+  <section id="donation" class="reveal">
+    <h2 class="title" data-i18n="donationTitle">How your donation is used</h2>
+    <p class="subtitle" data-i18n="donationSubtitle">Every euro goes directly to animals</p>
+
+    <div class="grid">
+      <div class="panel col-12">
+        <div class="cards" id="donationCards">
+          <!-- Filled by JS -->
+        </div>
+        <div style="height:14px"></div>
+        <div class="panel soft rich">
+          <p class="lead" data-i18n="noSalaryTitle">We work without salaries</p>
+          <p data-i18n="noSalaryText">Only real help, real animals, real results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPARENCY -->
+  <section id="transparency" class="reveal">
+    <h2 class="title" data-i18n="transTitle">Transparency</h2>
+    <p class="subtitle" data-i18n="transSubtitle">You can always see who you are helping and how</p>
+
+    <div class="grid">
+      <div class="panel col-7 soft">
+        <ul class="list" style="margin:0" id="transList">
+          <!-- Filled by JS -->
+        </ul>
+      </div>
+
+      <div class="panel col-5">
+        <div class="gallery">
+          <div class="shot">
+            <img src="hope_gallery_1.jpg">
+            <div class="label" data-i18n="photoLabel1">Rescue & care</div>
+          </div>
+          <div class="shot">
+            <img src="hope_gallery_2.jpg">
+            <div class="label" data-i18n="photoLabel2">Treatment progress</div>
+          </div>
+          <div class="shot">
+            <img src="hope_gallery_3.jpg">
+            <div class="label" data-i18n="photoLabel3">Adoption stories</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- STORIES: BEFORE / AFTER -->
+<section id="stories" class="reveal">
+  <h2 class="title" data-i18n="storiesTitle">Rescue stories</h2>
+  <p class="subtitle" data-i18n="storiesSubtitle">Before → After: real animals, real progress</p>
+
+  <div class="stories">
+    <!-- Story 1 -->
+    <article class="story">
+      <div class="storyTop">
+        <span class="tag before" data-i18n="tagBefore">Before</span>
+        <span class="tag after" data-i18n="tagAfter">After</span>
+      </div>
+
+      <div class="ba">
+        <figure>
+          <img src="story1_before.jpg" alt="Before rescue">
+          <figcaption data-i18n="s1Before">Found on the street</figcaption>
+        </figure>
+        <figure>
+          <img src="story1_after.jpg" alt="After rescue">
+          <figcaption data-i18n="s1After">Recovered and safe</figcaption>
+        </figure>
+      </div>
+
+      <div class="storyText">
+        <h3 data-i18n="s1Title">Puppy: treatment and warmth</h3>
+        <p data-i18n="s1Text">
+          We provided medical care, food and a safe place. Now this pup is healthy and ready for adoption.
+        </p>
+      </div>
+    </article>
+
+    <!-- Story 2 -->
+    <article class="story">
+      <div class="storyTop">
+        <span class="tag before" data-i18n="tagBefore">Before</span>
+        <span class="tag after" data-i18n="tagAfter">After</span>
+      </div>
+
+      <div class="ba">
+        <figure>
+          <img src="story2_before.jpg" alt="Before rescue">
+          <figcaption data-i18n="s2Before">Dirty and exhausted</figcaption>
+        </figure>
+        <figure>
+          <img src="story2_after.jpg" alt="After rescue">
+          <figcaption data-i18n="s2After">Cleaned and treated</figcaption>
+        </figure>
+      </div>
+
+      <div class="storyText">
+        <h3 data-i18n="s2Title">Dog: wash, meds, recovery</h3>
+        <p data-i18n="s2Text">
+          Grooming, vet visit and treatment made a huge difference. The dog is gaining strength every day.
+        </p>
+      </div>
+    </article>
+
+    <!-- Story 3 -->
+    <article class="story">
+      <div class="storyTop">
+        <span class="tag before" data-i18n="tagBefore">Before</span>
+        <span class="tag after" data-i18n="tagAfter">After</span>
+      </div>
+
+      <div class="ba">
+        <figure>
+          <img src="story3_before.jpg" alt="Before rescue">
+          <figcaption data-i18n="s3Before">Cold night outside</figcaption>
+        </figure>
+        <figure>
+          <img src="story3_after.jpg" alt="After rescue">
+          <figcaption data-i18n="s3After">Safe and cared for</figcaption>
+        </figure>
+      </div>
+
+      <div class="storyText">
+        <h3 data-i18n="s3Title">Street dog: safety first</h3>
+        <p data-i18n="s3Text">
+          We secured a safe place, food, and vet check. Next step is a loving family.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+
+  <!-- SUPPORT -->
+  <section id="support" class="reveal">
+    <div class="panel donate">
+      <h2 class="title" style="color:#fff;margin-bottom:10px" data-i18n="supportTitle">Support HOPE</h2>
+      <p class="subtitle" style="margin-bottom:0" data-i18n="supportText">
+        If you want to help homeless animals survive and find a home, you can support us.
+      </p>
+
+      <div class="actions">
+        <!-- Вставишь реальные ссылки -->
+        <a class="btn primary" href="#" data-i18n="btnOneTime">👉 One-time donation</a>
+        <a class="btn" href="#" data-i18n="btnMonthly">👉 Monthly support</a>
+        <a class="btn" href="#" data-i18n="btnPaypal">PayPal</a>
+        <a class="btn" href="#" data-i18n="btnPatreon">Patreon</a>
+        <a class="btn" href="#" data-i18n="btnBmac">Buy Me a Coffee</a>
+      </div>
+
+      <div class="note" data-i18n="supportNote">
+        (payment links here: PayPal / Patreon / Buy Me a Coffee)
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section id="mission" class="reveal">
+    <h2 class="title" data-i18n="missionTitle">Our mission</h2>
+    <p class="subtitle" data-i18n="missionText">
+      To give every abandoned paw a chance for safety, care and a home — everywhere.
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="reveal" style="padding-top:10px">
+    <div class="panel soft">
+      <h2 class="title" style="margin-bottom:12px" data-i18n="contactTitle">Contact</h2>
+      <p class="subtitle" style="margin-bottom:0" data-i18n="contactText">
+        Email: hope.foundation@email.com • Telegram: @hope_rescue
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 HOPE — Home Of Paws Everywhere</span><br>
+    <span data-i18n="footerLine">Volunteer Animal Rescue Initiative • Kharkiv, Ukraine</span>
+  </footer>
 </main>
 
-<!-- Lightbox overlay -->
-<div class="lb" id="lb" aria-hidden="true">
-  <div class="lbCloseHint">Click outside / Esc to close</div>
-  <img id="lbImg" alt="">
-</div>
-
 <script>
+  // ===== Content (EN = твой оригинальный текст, RU/UA — качественный перевод) =====
   const i18n = {
-    en:{
-      navWho:"Who we are",
-      navDo:"What we do",
-      navSupport:"Support",
-      navContact:"Contact",
-      kicker:"Kharkiv, Ukraine • Volunteer initiative",
-      heroLead:"Home Of Paws Everywhere — we rescue abandoned and homeless animals and take responsibility from rescue to a safe home.",
-      heroBullets:`<span>Treatment</span><span>Sterilization</span><span>Daily care</span><span>Adoption</span>`,
-      heroCta1:"Support HOPE",
-      heroCta2:"Contact us",
+    en: {
+      navWho: "Who we are",
+      navWhat: "What we do",
+      navSupport: "Support",
+      navContact: "Contact",
 
-      whoIntroTitle:"Who we are",
-      whoP1:"HOPE (Home Of Paws Everywhere) is a small independent volunteer initiative based in Kharkiv, Ukraine.",
-      whoP2:"We rescue abandoned and homeless animals from the streets, yards and dangerous areas of the city. Many of them are injured, sick, frightened or simply left behind.",
-      whoP3:"We take responsibility for each animal we save — from the first day on the street to a safe home.",
-      principlesTitle:"Core principles",
-      principles:["Care until adoption","No salaries","Transparency","Focus on treatment"],
+      heroKicker: "Kharkiv, Ukraine • Volunteer initiative",
+      heroSubtitle: "Home Of Paws Everywhere — we rescue abandoned and homeless animals and take responsibility from rescue to a safe home.",
+      heroLine2: "Treatment • Sterilization • Daily care • Adoption",
 
-      whatTitle:"What we do",
-      whatSubtitle:"Full-cycle care for homeless animals",
-      whatList:[
-        "Medical treatment (injuries, infections, recovery)",
-        "Sterilization / neutering",
-        "Daily care and rehabilitation",
-        "Finding families and permanent homes"
+      whoSubtitle: "Who we are",
+      whoLead: "HOPE (Home Of Paws Everywhere) is a small independent volunteer initiative based in Kharkiv, Ukraine.",
+      whoP1: "We rescue abandoned and homeless animals from the streets, yards and dangerous areas of the city. Many of them are injured, sick, frightened or simply left behind.",
+      whoP2: "We take responsibility for each animal we save — from the first day on the street to a safe home.",
+      whoBoxTitle: "Core principles",
+      principles: [
+        "We act quickly and responsibly",
+        "Full-cycle care (not partial help)",
+        "Animal welfare first",
+        "Transparency & reporting"
       ],
-      whatP1:"We do not abandon animals halfway.",
-      whatP2:"Every animal stays with us until it is safe, healthy and adopted.",
-      stat1:"Treatment", stat1s:"Vet care and medicines",
-      stat2:"Sterilization", stat2s:"Stop suffering & overpopulation",
-      stat3:"Adoption", stat3s:"Safe home, forever",
 
-      whyTitle:"Why your support matters",
-      whySubtitle:"Kharkiv is a frontline city.",
-      whyP1:"The number of abandoned animals grows every month, while resources are extremely limited.",
-      whyP2:"Without financial support: animals cannot be treated, sterilization cannot continue, rescued animals have nowhere to go.",
-      whyP3:"Your help directly saves lives.",
-      withoutTitle:"Without support",
-      withoutList:["Animals cannot be treated","Sterilization cannot continue","Rescued animals have nowhere to go"],
+      whatTitle: "What we do",
+      whatSubtitle: "We provide full-cycle care for homeless animals",
+      whatItems: [
+        { icon:"🩺", title:"Medical treatment", text:"Injuries, infections, recovery." },
+        { icon:"✂️", title:"Sterilization / neutering", text:"To stop suffering and overpopulation." },
+        { icon:"🧼", title:"Daily care & rehabilitation", text:"Shelter, feeding, recovery support." },
+        { icon:"🏡", title:"Finding loving families", text:"Permanent homes and responsible adoption." }
+      ],
+      noHalfwayTitle: "We do not abandon animals halfway.",
+      noHalfwayText: "Every animal stays with us until it is safe, healthy and adopted.",
 
-      donTitle:"How your donation is used",
-      donSubtitle:"Every euro goes directly to animals",
-      donList:["Veterinary clinics and medicines","Sterilization costs","Food and basic supplies","Emergency treatment"],
-      donP1:"We work without salaries — only real help, real animals, real results.",
+      whyTitle: "Why your support matters",
+      whyLead: "Kharkiv is a frontline city.",
+      whyP1: "The number of abandoned animals grows every month, while resources are extremely limited.",
+      whyP2: "Without financial support: animals cannot be treated, sterilization cannot continue, rescued animals have nowhere to go.",
+      whyP3: "Your help directly saves lives.",
+      whyBoxTitle: "Without financial support",
+      without: [
+        "animals cannot be treated",
+        "sterilization cannot continue",
+        "rescued animals have nowhere to go"
+      ],
 
-      transTitle:"Transparency",
-      transSubtitle:"You can always see who you are helping and how",
-      transList:["Photos and videos of rescued animals","Treatment progress","Adoptions and success stories"],
-      cap1:"Rescue & care",
-      cap2:"Treatment progress",
-      cap3:"Adoption stories",
+      donationTitle: "How your donation is used",
+      donationSubtitle: "Every euro goes directly to animals",
+      donationItems: [
+        { icon:"💊", title:"Veterinary clinics & medicines", text:"Treatment, diagnostics, recovery." },
+        { icon:"🏥", title:"Sterilization costs", text:"Neutering programs and follow-up care." },
+        { icon:"🍚", title:"Food & basic supplies", text:"Daily essentials for rescued animals." },
+        { icon:"🚑", title:"Emergency treatment", text:"Urgent cases when time matters." }
+      ],
+      noSalaryTitle: "We work without salaries",
+      noSalaryText: "Only real help, real animals, real results.",
 
-      storiesTitle:"Rescue stories",
-      storiesSubtitle:"Before → After: real animals, real progress",
-      tagBefore:"Before",
-      tagAfter:"After",
+      transTitle: "Transparency",
+      transSubtitle: "You can always see who you are helping and how",
+      transList: [
+        "photos and videos of rescued animals",
+        "treatment progress",
+        "adoptions and success stories"
+      ],
+      photoLabel1: "Rescue & care",
+      photoLabel2: "Treatment progress",
+      photoLabel3: "Adoption stories",
 
-      s1Before:"Found on the street",
-      s1After:"Recovered and safe",
-      s1Title:"Puppy: treatment and warmth",
-      s1Text:"We provided medical care, food and a safe place. Now this pup is healthy and ready for adoption.",
+      supportTitle: "Support HOPE",
+      supportText: "If you want to help homeless animals survive and find a home, you can support us:",
+      btnOneTime: "👉 One-time donation",
+      btnMonthly: "👉 Monthly support (even a small amount makes a big difference)",
+      btnPaypal: "PayPal",
+      btnPatreon: "Patreon",
+      btnBmac: "Buy Me a Coffee",
+      supportNote: "(PayPal / Patreon / Buy Me a Coffee)",
 
-      s2Before:"Dirty and exhausted",
-      s2After:"Cleaned and treated",
-      s2Title:"Dog: wash, meds, recovery",
-      s2Text:"Grooming, vet visit and treatment made a huge difference. The dog is gaining strength every day.",
+      missionTitle: "Our mission",
+      missionText: "To give every abandoned paw a chance for safety, care and a home — everywhere.",
 
-      s3Before:"Cold night outside",
-      s3After:"Safe and cared for",
-      s3Title:"Street dog: safety first",
-      s3Text:"We secured a safe place, food, and vet check. Next step is a loving family.",
+      contactTitle: "Contact",
+      contactText: "Email: uahopekh@gmail.com • Telegram: @hope_foundation_kh",
 
-      supportTitle:"Support HOPE",
-      supportSubtitle:"If you want to help homeless animals survive and find a home, you can support us.",
-      supportOne:"One-time donation",
-      supportMonthly:"Monthly support",
-      supportPayPal:"PayPal",
-      supportPatreon:"Patreon",
-      supportBmac:"Buy Me a Coffee",
-      supportNote:"(payment links here: PayPal / Patreon / Buy Me a Coffee)",
-      missionTitle:"Our mission",
-      missionText:"To give every abandoned paw a chance for safety, care and a home — everywhere.",
-
-      contactTitle:"Contact",
-      contactSubtitle:"Write to us — we respond as soon as we can.",
-      contactEmailBtn:"Email",
-      contactTgBtn:"Telegram",
-      contactLine:"Email: hope.foundation@email.com • Telegram: @hope_rescue",
-
-      footerLine:"Volunteer Animal Rescue Initiative • Kharkiv, Ukraine"
+      footerLine: "Volunteer Animal Rescue Initiative • Kharkiv, Ukraine"
     },
 
-    ru:{
-      navWho:"Кто мы",
-      navDo:"Что делаем",
-      navSupport:"Поддержать",
-      navContact:"Контакты",
-      kicker:"Харьков, Украина • Волонтёрская инициатива",
-      heroLead:"Home Of Paws Everywhere — мы спасаем брошенных и бездомных животных и берём ответственность от спасения до безопасного дома.",
-      heroBullets:`<span>Лечение</span><span>Стерилизация</span><span>Ежедневный уход</span><span>Пристройство</span>`,
-      heroCta1:"Поддержать HOPE",
-      heroCta2:"Связаться",
+    ru: {
+      navWho: "Кто мы",
+      navWhat: "Что делаем",
+      navSupport: "Поддержать",
+      navContact: "Контакты",
 
-      whoIntroTitle:"Кто мы",
-      whoP1:"HOPE (Home Of Paws Everywhere) — небольшая независимая волонтёрская инициатива из Харькова, Украина.",
-      whoP2:"Мы спасаем брошенных и бездомных животных с улиц, дворов и опасных районов города. Многие из них травмированы, больны, испуганы или просто оставлены.",
-      whoP3:"Мы берём ответственность за каждого спасённого — от первого дня на улице до безопасного дома.",
-      principlesTitle:"Принципы",
-      principles:["Забота до пристройства","Без зарплат","Прозрачность","Фокус на лечении"],
+      heroKicker: "Харьков, Украина • Волонтёрская инициатива",
+      heroSubtitle: "Home Of Paws Everywhere — мы спасаем брошенных и бездомных животных и берём ответственность от спасения до безопасного дома.",
+      heroLine2: "Лечение • Стерилизация • Уход • Пристройство",
 
-      whatTitle:"Что делаем",
-      whatSubtitle:"Полный цикл помощи бездомным животным",
-      whatList:[
-        "Лечение (травмы, инфекции, восстановление)",
-        "Стерилизация / кастрация",
-        "Ежедневный уход и реабилитация",
-        "Поиск семьи и постоянного дома"
+      whoSubtitle: "Кто мы",
+      whoLead: "HOPE (Home Of Paws Everywhere) — небольшая независимая волонтёрская инициатива в Харькове, Украина.",
+      whoP1: "Мы спасаем брошенных и бездомных животных с улиц, дворов и опасных районов города. Многие из них ранены, больны, напуганы или просто оставлены.",
+      whoP2: "Мы берём ответственность за каждого спасённого — от первого дня на улице до безопасного дома.",
+      whoBoxTitle: "Принципы",
+      principles: [
+        "Быстрая и ответственная помощь",
+        "Полный цикл (не «половинчатая» помощь)",
+        "Благополучие животных — приоритет",
+        "Прозрачность и отчётность"
       ],
-      whatP1:"Мы не бросаем животных на полпути.",
-      whatP2:"Каждое животное остаётся с нами, пока оно не будет в безопасности, здоровым и пристроенным.",
-      stat1:"Лечение", stat1s:"Ветпомощь и лекарства",
-      stat2:"Стерилизация", stat2s:"Остановить страдания",
-      stat3:"Пристройство", stat3s:"Дом навсегда",
 
-      whyTitle:"Почему важна поддержка",
-      whySubtitle:"Харьков — прифронтовой город.",
-      whyP1:"Число брошенных животных растёт каждый месяц, а ресурсов крайне мало.",
-      whyP2:"Без финансовой поддержки: животных нельзя лечить, стерилизация остановится, спасённым негде будет жить.",
-      whyP3:"Ваша помощь напрямую спасает жизни.",
-      withoutTitle:"Без поддержки",
-      withoutList:["Нельзя лечить животных","Нельзя продолжать стерилизацию","Спасённым негде жить"],
+      whatTitle: "Что мы делаем",
+      whatSubtitle: "Мы обеспечиваем полный цикл помощи бездомным животным",
+      whatItems: [
+        { icon:"🩺", title:"Лечение", text:"Травмы, инфекции, восстановление." },
+        { icon:"✂️", title:"Стерилизация / кастрация", text:"Чтобы остановить страдания и рост популяции." },
+        { icon:"🧼", title:"Ежедневный уход и реабилитация", text:"Приют, питание, восстановление." },
+        { icon:"🏡", title:"Поиск семьи и дома", text:"Постоянные семьи и ответственное пристройство." }
+      ],
+      noHalfwayTitle: "Мы не бросаем животных на полпути.",
+      noHalfwayText: "Каждое животное остаётся с нами, пока не будет в безопасности, здорово и устроено.",
 
-      donTitle:"Как используются пожертвования",
-      donSubtitle:"Каждое евро идёт животным",
-      donList:["Ветклиники и лекарства","Стоимость стерилизации","Корм и базовые вещи","Экстренное лечение"],
-      donP1:"Мы работаем без зарплат — только реальная помощь, реальные животные, реальные результаты.",
+      whyTitle: "Почему важна поддержка",
+      whyLead: "Харьков — прифронтовой город.",
+      whyP1: "Количество брошенных животных растёт каждый месяц, а ресурсы крайне ограничены.",
+      whyP2: "Без финансовой поддержки: животных нельзя лечить, стерилизация остановится, спасённым будет некуда идти.",
+      whyP3: "Ваша помощь напрямую спасает жизни.",
+      whyBoxTitle: "Без финансовой поддержки",
+      without: [
+        "животных нельзя лечить",
+        "стерилизация не может продолжаться",
+        "спасённым животным некуда идти"
+      ],
 
-      transTitle:"Прозрачность",
-      transSubtitle:"Вы всегда можете видеть, кому помогаете и как",
-      transList:["Фото и видео спасённых животных","Прогресс лечения","Пристройство и истории успеха"],
-      cap1:"Спасение и уход",
-      cap2:"Прогресс лечения",
-      cap3:"Истории пристройства",
+      donationTitle: "Куда идут пожертвования",
+      donationSubtitle: "Каждый евро идёт напрямую животным",
+      donationItems: [
+        { icon:"💊", title:"Клиники и лекарства", text:"Лечение, диагностика, восстановление." },
+        { icon:"🏥", title:"Стерилизация", text:"Программы и послеоперационный уход." },
+        { icon:"🍚", title:"Корм и базовые вещи", text:"Ежедневные потребности спасённых." },
+        { icon:"🚑", title:"Экстренная помощь", text:"Срочные случаи, когда важна каждая минута." }
+      ],
+      noSalaryTitle: "Мы работаем без зарплат",
+      noSalaryText: "Только реальная помощь, реальные животные, реальные результаты.",
 
-      storiesTitle:"Истории спасения",
-      storiesSubtitle:"До → После: реальные животные, реальный прогресс",
-      tagBefore:"До",
-      tagAfter:"После",
+      transTitle: "Прозрачность",
+      transSubtitle: "Вы всегда можете увидеть, кому помогаете и как",
+      transList: [
+        "фото и видео спасённых животных",
+        "прогресс лечения",
+        "истории пристройства и успеха"
+      ],
+      photoLabel1: "Спасение и уход",
+      photoLabel2: "Прогресс лечения",
+      photoLabel3: "Истории пристройства",
 
-      s1Before:"Найден на улице",
-      s1After:"Восстановился и в безопасности",
-      s1Title:"Щенок: лечение и тепло",
-      s1Text:"Мы обеспечили лечение, питание и безопасное место. Сейчас щенок здоров и готов к пристройству.",
+      supportTitle: "Поддержать HOPE",
+      supportText: "Если вы хотите помочь бездомным животным выжить и найти дом — поддержите нас:",
+      btnOneTime: "👉 Разовое пожертвование",
+      btnMonthly: "👉 Ежемесячная поддержка (даже небольшая сумма очень важна)",
+      btnPaypal: "PayPal",
+      btnPatreon: "Patreon",
+      btnBmac: "Buy Me a Coffee",
+      supportNote: "(PayPal / Patreon / Buy Me a Coffee)",
 
-      s2Before:"Грязный и истощённый",
-      s2After:"Отмыт и пролечен",
-      s2Title:"Пёс: мойка, лекарства, восстановление",
-      s2Text:"Груминг, осмотр у врача и лечение сильно изменили состояние. Пёс набирается сил каждый день.",
+      missionTitle: "Наша миссия",
+      missionText: "Дать каждой брошенной лапке шанс на безопасность, заботу и дом — повсюду.",
 
-      s3Before:"Холодная ночь на улице",
-      s3After:"В безопасности и под заботой",
-      s3Title:"Уличный пёс: сначала безопасность",
-      s3Text:"Мы дали безопасное место, еду и осмотр у врача. Следующий шаг — любящая семья.",
+      contactTitle: "Контакты",
+      contactText: "Email: uahopekh@gmail.com • Telegram: @hope_foundation_kh",
 
-      supportTitle:"Поддержать HOPE",
-      supportSubtitle:"Если вы хотите помочь бездомным животным выжить и найти дом — поддержите нас.",
-      supportOne:"Разовый донат",
-      supportMonthly:"Ежемесячная поддержка",
-      supportPayPal:"PayPal",
-      supportPatreon:"Patreon",
-      supportBmac:"Buy Me a Coffee",
-      supportNote:"(сюда вставить ссылки: PayPal / Patreon / Buy Me a Coffee)",
-      missionTitle:"Наша миссия",
-      missionText:"Дать каждой брошенной лапе шанс на безопасность, заботу и дом — везде.",
-
-      contactTitle:"Контакты",
-      contactSubtitle:"Напишите нам — отвечаем как можно быстрее.",
-      contactEmailBtn:"Email",
-      contactTgBtn:"Telegram",
-      contactLine:"Email: hope.foundation@email.com • Telegram: @hope_rescue",
-
-      footerLine:"Волонтёрская инициатива по спасению животных • Харьков, Украина"
+      footerLine: "Волонтёрская инициатива помощи животным • Харьков, Украина"
     },
 
-    ua:{
-      navWho:"Хто ми",
-      navDo:"Що робимо",
-      navSupport:"Підтримати",
-      navContact:"Контакти",
-      kicker:"Харків, Україна • Волонтерська ініціатива",
-      heroLead:"Home Of Paws Everywhere — ми рятуємо покинутих і бездомних тварин та беремо відповідальність від порятунку до безпечного дому.",
-      heroBullets:`<span>Лікування</span><span>Стерилізація</span><span>Щоденний догляд</span><span>Прилаштування</span>`,
-      heroCta1:"Підтримати HOPE",
-      heroCta2:"Зв'язатися",
+    ua: {
+      navWho: "Хто ми",
+      navWhat: "Що робимо",
+      navSupport: "Підтримати",
+      navContact: "Контакти",
 
-      whoIntroTitle:"Хто ми",
-      whoP1:"HOPE (Home Of Paws Everywhere) — невелика незалежна волонтерська ініціатива з Харкова, Україна.",
-      whoP2:"Ми рятуємо покинутих і бездомних тварин з вулиць, дворів та небезпечних районів міста. Багато з них травмовані, хворі, налякані або просто залишені.",
-      whoP3:"Ми беремо відповідальність за кожну врятовану — від першого дня на вулиці до безпечного дому.",
-      principlesTitle:"Принципи",
-      principles:["Турбота до прилаштування","Без зарплат","Прозорість","Фокус на лікуванні"],
+      heroKicker: "Харків, Україна • Волонтерська ініціатива",
+      heroSubtitle: "Home Of Paws Everywhere — ми рятуємо покинутих і бездомних тварин та беремо відповідальність від порятунку до безпечного дому.",
+      heroLine2: "Лікування • Стерилізація • Догляд • Прилаштування",
 
-      whatTitle:"Що робимо",
-      whatSubtitle:"Повний цикл допомоги бездомним тваринам",
-      whatList:[
-        "Лікування (травми, інфекції, відновлення)",
-        "Стерилізація / кастрація",
-        "Щоденний догляд і реабілітація",
-        "Пошук родини та постійного дому"
+      whoSubtitle: "Хто ми",
+      whoLead: "HOPE (Home Of Paws Everywhere) — невелика незалежна волонтерська ініціатива, що базується у Харкові, Україна.",
+      whoP1: "Ми рятуємо покинутих і бездомних тварин з вулиць, дворів та небезпечних районів міста. Багато з них поранені, хворі, налякані або просто залишені.",
+      whoP2: "Ми беремо відповідальність за кожну врятовану тварину — від першого дня на вулиці до безпечного дому.",
+      whoBoxTitle: "Принципи",
+      principles: [
+        "Швидка та відповідальна допомога",
+        "Повний цикл (не «половинчасто»)",
+        "Добробут тварин — пріоритет",
+        "Прозорість та звітність"
       ],
-      whatP1:"Ми не залишаємо тварин на півдорозі.",
-      whatP2:"Кожна тварина залишається з нами, доки вона не буде в безпеці, здоровою та прилаштованою.",
-      stat1:"Лікування", stat1s:"Ветдопомога та ліки",
-      stat2:"Стерилізація", stat2s:"Зупинити страждання",
-      stat3:"Прилаштування", stat3s:"Дім назавжди",
 
-      whyTitle:"Чому важлива підтримка",
-      whySubtitle:"Харків — прифронтове місто.",
-      whyP1:"Кількість покинутих тварин зростає щомісяця, а ресурсів дуже мало.",
-      whyP2:"Без фінансової підтримки: тварин не можна лікувати, стерилізацію доведеться зупинити, врятованим не буде де жити.",
-      whyP3:"Ваша допомога напряму рятує життя.",
-      withoutTitle:"Без підтримки",
-      withoutList:["Неможливо лікувати тварин","Неможливо продовжувати стерилізацію","Врятованим ніде жити"],
+      whatTitle: "Що ми робимо",
+      whatSubtitle: "Ми забезпечуємо повний цикл допомоги бездомним тваринам",
+      whatItems: [
+        { icon:"🩺", title:"Медичне лікування", text:"Травми, інфекції, відновлення." },
+        { icon:"✂️", title:"Стерилізація / кастрація", text:"Щоб зупинити страждання та перенаселення." },
+        { icon:"🧼", title:"Щоденний догляд і реабілітація", text:"Прихисток, харчування, відновлення." },
+        { icon:"🏡", title:"Пошук люблячих родин", text:"Постійний дім та відповідальне прилаштування." }
+      ],
+      noHalfwayTitle: "Ми не залишаємо тварин на півшляху.",
+      noHalfwayText: "Кожна тварина з нами, доки не буде в безпеці, здорова і прилаштована.",
 
-      donTitle:"Як використовуються пожертви",
-      donSubtitle:"Кожне євро йде тваринам",
-      donList:["Ветклініки та ліки","Вартість стерилізації","Корм та базові речі","Екстрене лікування"],
-      donP1:"Ми працюємо без зарплат — тільки реальна допомога, реальні тварини, реальні результати.",
+      whyTitle: "Чому важлива підтримка",
+      whyLead: "Харків — прифронтове місто.",
+      whyP1: "Кількість покинутих тварин зростає щомісяця, а ресурси вкрай обмежені.",
+      whyP2: "Без фінансової підтримки: тварин неможливо лікувати, стерилізація зупиниться, врятованим нікуди буде йти.",
+      whyP3: "Ваша допомога напряму рятує життя.",
+      whyBoxTitle: "Без фінансової підтримки",
+      without: [
+        "тварин неможливо лікувати",
+        "стерилізація не може тривати",
+        "врятованим тваринам нікуди йти"
+      ],
 
-      transTitle:"Прозорість",
-      transSubtitle:"Ви завжди можете бачити, кому допомагаєте і як",
-      transList:["Фото та відео врятованих тварин","Прогрес лікування","Прилаштування та історії успіху"],
-      cap1:"Порятунок і догляд",
-      cap2:"Прогрес лікування",
-      cap3:"Історії прилаштування",
+      donationTitle: "Як використовуються донати",
+      donationSubtitle: "Кожне євро йде безпосередньо тваринам",
+      donationItems: [
+        { icon:"💊", title:"Клініки та ліки", text:"Лікування, діагностика, відновлення." },
+        { icon:"🏥", title:"Витрати на стерилізацію", text:"Програми та післяопераційний догляд." },
+        { icon:"🍚", title:"Корм і базові речі", text:"Щоденні потреби врятованих." },
+        { icon:"🚑", title:"Екстрене лікування", text:"Термінові випадки, коли час критичний." }
+      ],
+      noSalaryTitle: "Ми працюємо без зарплат",
+      noSalaryText: "Лише реальна допомога, реальні тварини, реальні результати.",
 
-      storiesTitle:"Історії порятунку",
-      storiesSubtitle:"До → Після: реальні тварини, реальний прогрес",
-      tagBefore:"До",
-      tagAfter:"Після",
+      transTitle: "Прозорість",
+      transSubtitle: "Ви завжди бачите, кому допомагаєте і як",
+      transList: [
+        "фото та відео врятованих тварин",
+        "прогрес лікування",
+        "прилаштування та історії успіху"
+      ],
+      photoLabel1: "Порятунок і догляд",
+      photoLabel2: "Прогрес лікування",
+      photoLabel3: "Історії прилаштування",
 
-      s1Before:"Знайдений на вулиці",
-      s1After:"Відновився та в безпеці",
-      s1Title:"Цуценя: лікування і тепло",
-      s1Text:"Ми забезпечили лікування, харчування та безпечне місце. Зараз цуценя здорове і готове до прилаштування.",
+      supportTitle: "Підтримати HOPE",
+      supportText: "Якщо ви хочете допомогти бездомним тваринам вижити й знайти дім — підтримайте нас:",
+      btnOneTime: "👉 Разовий донат",
+      btnMonthly: "👉 Щомісячна підтримка (навіть невелика сума важлива)",
+      btnPaypal: "PayPal",
+      btnPatreon: "Patreon",
+      btnBmac: "Buy Me a Coffee",
+      supportNote: "(PayPal / Patreon / Buy Me a Coffee)",
 
-      s2Before:"Брудний і виснажений",
-      s2After:"Вимитий та пролікований",
-      s2Title:"Пес: миття, ліки, відновлення",
-      s2Text:"Грумінг, огляд у ветеринара та лікування дуже змінили стан. Пес набирається сил щодня.",
+      missionTitle: "Наша місія",
+      missionText: "Дати кожній покинутій лапці шанс на безпеку, турботу та дім — всюди.",
 
-      s3Before:"Холодна ніч надворі",
-      s3After:"У безпеці та під турботою",
-      s3Title:"Вуличний пес: спершу безпека",
-      s3Text:"Ми дали безпечне місце, їжу та огляд у ветеринара. Наступний крок — любляча родина.",
+      contactTitle: "Контакти",
+      contactText: "Email: uahopekh@gmail.com • Telegram: @hope_foundation_kh",
 
-      supportTitle:"Підтримати HOPE",
-      supportSubtitle:"Якщо ви хочете допомогти бездомним тваринам вижити та знайти дім — підтримайте нас.",
-      supportOne:"Разовий донат",
-      supportMonthly:"Щомісячна підтримка",
-      supportPayPal:"PayPal",
-      supportPatreon:"Patreon",
-      supportBmac:"Buy Me a Coffee",
-      supportNote:"(сюди вставити посилання: PayPal / Patreon / Buy Me a Coffee)",
-      missionTitle:"Наша місія",
-      missionText:"Дати кожній покинутій лапі шанс на безпеку, турботу та дім — всюди.",
-
-      contactTitle:"Контакти",
-      contactSubtitle:"Напишіть нам — відповідаємо якнайшвидше.",
-      contactEmailBtn:"Email",
-      contactTgBtn:"Telegram",
-      contactLine:"Email: hope.foundation@email.com • Telegram: @hope_rescue",
-
-      footerLine:"Волонтерська ініціатива з порятунку тварин • Харків, Україна"
+      footerLine: "Волонтерська ініціатива допомоги тваринам • Харків, Україна"
     }
   };
 
   function setPressed(lang){
-    document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
-    const btn = document.getElementById("lang-"+lang);
-    if(btn) btn.classList.add("active");
+    ["en","ua","ru"].forEach(k=>{
+      const b=document.getElementById("btn-"+k);
+      if(b) b.setAttribute("aria-pressed", k===lang ? "true" : "false");
+    });
   }
 
   function applyLang(lang){
     const dict = i18n[lang] || i18n.en;
 
-    // nav + hero
+    // simple fields
     document.querySelectorAll("[data-i18n]").forEach(el=>{
       const key = el.getAttribute("data-i18n");
-      if(!key) return;
-      const v = dict[key];
-      if(v == null) return;
-      // allow HTML for hero bullets
-      if(key === "heroBullets") el.innerHTML = v;
-      else el.textContent = v;
+      if(dict[key]) el.textContent = dict[key];
     });
 
-    // chips
-    const chips = document.getElementById("principlesChips");
-    chips.innerHTML = dict.principles.map(x=>`<div class="chip">${x}</div>`).join("");
+    // lists/cards
+    const principles = document.getElementById("principlesList");
+    principles.innerHTML = dict.principles.map(x=>`<li>${x}</li>`).join("");
 
-    // lists
-    const whatList = document.getElementById("whatList");
-    whatList.innerHTML = dict.whatList.map(x=>`<li>${x}</li>`).join("");
+    const without = document.getElementById("withoutList");
+    without.innerHTML = dict.without.map(x=>`<li>${x}</li>`).join("");
 
-    const withoutList = document.getElementById("withoutList");
-    withoutList.innerHTML = dict.withoutList.map(x=>`<li>${x}</li>`).join("");
+    const whatCards = document.getElementById("whatCards");
+    whatCards.innerHTML = dict.whatItems.map(it => `
+      <div class="card">
+        <b><span class="icon">${it.icon}</span>${it.title}</b>
+        <p>${it.text}</p>
+      </div>
+    `).join("");
 
-    const donList = document.getElementById("donList");
-    donList.innerHTML = dict.donList.map(x=>`<li>${x}</li>`).join("");
+    const donationCards = document.getElementById("donationCards");
+    donationCards.innerHTML = dict.donationItems.map(it => `
+      <div class="card">
+        <b><span class="icon">${it.icon}</span>${it.title}</b>
+        <p>${it.text}</p>
+      </div>
+    `).join("");
 
     const trans = document.getElementById("transList");
     trans.innerHTML = dict.transList.map(x=>`<li>${x}</li>`).join("");
@@ -1129,43 +1080,6 @@
     }, { threshold: 0.14 });
     els.forEach(el=>io.observe(el));
   }
-
-  // lightbox for story photos
-  (function setupLightbox(){
-    const lb = document.getElementById("lb");
-    const lbImg = document.getElementById("lbImg");
-    if(!lb || !lbImg) return;
-
-    function openLB(src, alt){
-      lbImg.src = src;
-      lbImg.alt = alt || "";
-      lb.classList.add("open");
-      lb.setAttribute("aria-hidden","false");
-      document.body.style.overflow = "hidden";
-    }
-    function closeLB(){
-      lb.classList.remove("open");
-      lb.setAttribute("aria-hidden","true");
-      lbImg.src = "";
-      document.body.style.overflow = "";
-    }
-
-    document.querySelectorAll("#stories .ba img").forEach(img=>{
-      img.addEventListener("click", (e)=>{
-        e.preventDefault();
-        openLB(img.getAttribute("src"), img.getAttribute("alt"));
-      });
-    });
-
-    lb.addEventListener("click", (e)=>{
-      if(e.target === lb) closeLB();
-    });
-    lbImg.addEventListener("click", (e)=> e.stopPropagation());
-
-    document.addEventListener("keydown", (e)=>{
-      if(e.key === "Escape" && lb.classList.contains("open")) closeLB();
-    });
-  })();
 
   // init
   (function init(){
