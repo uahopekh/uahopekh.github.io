@@ -958,6 +958,118 @@ img { max-width: 100%; height: auto; }
       To give every abandoned paw a chance for safety, care and a home — everywhere.
     </p>
   </section>
+<section id="impact" class="section">
+  <div class="container">
+    <div class="sectionTitleRow">
+      <div>
+        <div class="sectionKicker" data-i18n="impactKicker">Impact</div>
+        <h2 class="sectionTitle" data-i18n="impactTitle">Real animals, real help</h2>
+        <p class="sectionSub" data-i18n="impactSub">
+          We publish photo/video updates and outcomes — you can always see who you help.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="statsGrid">
+        <div class="stat">
+          <p class="statNum" id="statRescued">—</p>
+          <div class="statLbl" data-i18n="statRescuedLbl">Animals rescued</div>
+        </div>
+        <div class="stat">
+          <p class="statNum" id="statAdopted">—</p>
+          <div class="statLbl" data-i18n="statAdoptedLbl">Adopted to loving homes</div>
+        </div>
+        <div class="stat">
+          <p class="statNum" id="statInCare">—</p>
+          <div class="statLbl" data-i18n="statInCareLbl">Currently under our care</div>
+        </div>
+      </div>
+
+      <div class="noteBox" data-i18n="impactNote">
+        Updated regularly. Full reports with photos & videos are in our Telegram.
+      </div>
+
+      <div class="btnRow">
+        <a class="btn btnPrimary" href="https://t.me/hope_foundation_kh" target="_blank" rel="noopener" data-i18n="btnReport">
+          📷 Live report
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="support" class="section">
+  <div class="container">
+    <div class="sectionTitleRow">
+      <div>
+        <div class="sectionKicker" data-i18n="supportKicker">Support</div>
+        <h2 class="sectionTitle" data-i18n="supportTitle">How you can help</h2>
+        <p class="sectionSub" data-i18n="supportSub">
+          Even a small monthly donation covers food, medicines and urgent vet care.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="helpList">
+          <div class="helpItem">
+            <div class="helpIcon">💳</div>
+            <div>
+              <h4 data-i18n="help1Title">One-time donation</h4>
+              <p data-i18n="help1Text">Help cover urgent vet bills, medicines and rescue costs.</p>
+            </div>
+          </div>
+
+          <div class="helpItem">
+            <div class="helpIcon">🔁</div>
+            <div>
+              <h4 data-i18n="help2Title">Monthly support</h4>
+              <p data-i18n="help2Text">Stable help means more rescues and continuous treatment.</p>
+            </div>
+          </div>
+
+          <div class="helpItem">
+            <div class="helpIcon">🏡</div>
+            <div>
+              <h4 data-i18n="help3Title">Adopt / foster</h4>
+              <p data-i18n="help3Text">Give an animal a safe home — we guide you through everything.</p>
+            </div>
+          </div>
+
+          <div class="helpItem">
+            <div class="helpIcon">📦</div>
+            <div>
+              <h4 data-i18n="help4Title">Supplies & meds</h4>
+              <p data-i18n="help4Text">Food, leashes, carriers, disinfectants, medicines — all help.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="noteBox" data-i18n="supportNote">
+          We work without salaries. Every donation goes directly to animals.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 10px" data-i18n="supportActionsTitle">Quick actions</h3>
+
+        <div class="btnRow">
+          <!-- ЗАМЕНИ ССЫЛКИ НА СВОИ -->
+          <a class="btn btnPrimary" href="#" target="_blank" rel="noopener" data-i18n="btnDonate">Donate</a>
+          <a class="btn" href="#" target="_blank" rel="noopener" data-i18n="btnMonthly">Monthly support</a>
+          <a class="btn" href="https://t.me/hope_foundation_kh" target="_blank" rel="noopener" data-i18n="btnAdopt">Adopt / foster</a>
+          <a class="btn" href="https://t.me/hope_foundation_kh" target="_blank" rel="noopener" data-i18n="btnSupplies">Help with supplies</a>
+        </div>
+
+        <div class="noteBox" data-i18n="supportLinksHint">
+          Replace the buttons with your PayPal / Patreon / BuyMeACoffee links.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- CONTACT -->
   <section id="contact" class="reveal" style="padding-top:10px">
@@ -1332,6 +1444,17 @@ lb.onclick = () => {
 document.addEventListener("keydown", e=>{
   if(e.key==="Escape") lb.classList.remove("open");
 });
+    // Impact stats (change numbers here)
+const IMPACT = { rescued: 37, adopted: 15, inCare: 22 };
+
+function renderImpact(){
+  const a = (id, v) => { const el=document.getElementById(id); if(el) el.textContent = v; };
+  a("statRescued", IMPACT.rescued);
+  a("statAdopted", IMPACT.adopted);
+  a("statInCare", IMPACT.inCare);
+}
+renderImpact();
+
 </script>
 </body>
 </html>
